@@ -26,6 +26,14 @@ fmt_p <- function(x) {
   ifelse(is.na(x), "", ifelse(x < 0.001, "<0.001", fmt_num(x, 3)))
 }
 
+fmt_p4 <- function(x) {
+  ifelse(is.na(x), "", ifelse(x < 0.0001, "<0.0001", fmt_num(x, 4)))
+}
+
+fmt_p_interaction <- function(x) {
+  ifelse(is.na(x), "", ifelse(x < 0.01, fmt_p4(x), fmt_p(x)))
+}
+
 label_component <- function(x) {
   recode(
     x,
@@ -54,7 +62,7 @@ md_table <- function(df) {
   paste(c(paste0("| ", header, " |"), paste0("| ", sep, " |"), paste0("| ", body, " |")), collapse = "\n")
 }
 
-analysis <- read_tsv("local CHARLS analytic table", show_col_types = FALSE)
+analysis <- read_tsv("results/tcm/person_wave_tcm_core_density_analysis.tsv", show_col_types = FALSE)
 supply <- read_tsv("results/tcm/province_year_tcm_core_density.tsv", show_col_types = FALSE)
 main <- read_tsv("results/tcm/tcm_supply_main_models.tsv", show_col_types = FALSE)
 strict <- read_tsv("results/tcm/tcm_supply_strict_secondary_models.tsv", show_col_types = FALSE)
@@ -128,12 +136,12 @@ table2 <- supply %>%
       " to ",
       fmt_num(max(value_per_10000_population_tcm_hospital_beds, na.rm = TRUE), 2)
     ),
-    `TCM physicians` = sum(value_tcm_physicians, na.rm = TRUE),
-    `physicians per 10,000, mean` = mean(value_per_10000_population_tcm_physicians, na.rm = TRUE),
+    `TCM physicians` = sum(value_tcm_practicing_assistant_physicians, na.rm = TRUE),
+    `physicians per 10,000, mean` = mean(value_per_10000_population_tcm_practicing_assistant_physicians, na.rm = TRUE),
     `physicians per 10,000, range` = paste0(
-      fmt_num(min(value_per_10000_population_tcm_physicians, na.rm = TRUE), 2),
+      fmt_num(min(value_per_10000_population_tcm_practicing_assistant_physicians, na.rm = TRUE), 2),
       " to ",
-      fmt_num(max(value_per_10000_population_tcm_physicians, na.rm = TRUE), 2)
+      fmt_num(max(value_per_10000_population_tcm_practicing_assistant_physicians, na.rm = TRUE), 2)
     ),
     .groups = "drop"
   ) %>%
@@ -197,8 +205,8 @@ table4 <- interactions %>%
       TRUE ~ reference_level
     ),
     `interaction estimate` = fmt_ci(interaction_effect, ci_lower, ci_upper, 2),
-    `unadjusted P value` = fmt_p(pvalue),
-    `Holm-adjusted P value` = fmt_p(pvalue_holm),
+    `unadjusted P value` = fmt_p_interaction(pvalue),
+    `Holm-adjusted P value` = fmt_p_interaction(pvalue_holm),
     observations = fmt_int(n_person_waves),
     provinces = fmt_int(n_clusters)
   )
@@ -361,7 +369,7 @@ tables_md <- c(
   "",
   md_table(table2),
   "",
-  "Note: Provincial supply indicators were taken from official National Administration of Traditional Chinese Medicine statistical extracts. Physician counts refer to TCM TCM physicians.",
+  "Note: Provincial supply indicators were taken from official National Administration of Traditional Chinese Medicine statistical extracts. Physician counts refer to TCM physicians.",
   "",
   "## Table 3. Main and sensitivity associations between provincial TCM supply and realized TCM use",
   "",

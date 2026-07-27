@@ -21,7 +21,7 @@ Note: Values are person-wave summaries unless labelled as respondents. Percentag
 | 2015 | 31 | 819,412 | 6.19 | 3.92 to 9.26 | 452,190 | 3.42 | 1.93 to 7.35 |
 | 2018 | 31 | 1,021,548 | 7.56 | 4.45 to 11.82 | 575,454 | 4.32 | 2.40 to 9.13 |
 
-Note: Provincial supply indicators were taken from official National Administration of Traditional Chinese Medicine statistical extracts. Physician counts refer to TCM TCM physicians.
+Note: Provincial supply indicators were taken from official National Administration of Traditional Chinese Medicine statistical extracts. Physician counts refer to TCM physicians.
 
 ## Table 3. Main and sensitivity associations between provincial TCM supply and realized TCM use
 
@@ -46,7 +46,7 @@ Note: Estimates are percentage-point differences per 1-SD higher province-year s
 | Lower education | Higher education | 0.33 (-1.43 to 2.09) | 0.704 | 1.000 | 32,914 | 28 |
 | Lower household income | Higher household income | 0.35 (-0.74 to 1.45) | 0.514 | 1.000 | 32,914 | 28 |
 | Income missing | Higher household income | 0.68 (-0.70 to 2.06) | 0.323 | 1.000 | 32,914 | 28 |
-| Multimorbidity | No multimorbidity | 2.71 (1.14 to 4.27) | 0.001 | 0.009 | 32,914 | 28 |
+| Multimorbidity | No multimorbidity | 2.71 (1.14 to 4.27) | 0.0015 | 0.0088 | 32,914 | 28 |
 | ADL limitation | No ADL limitation | 0.25 (-1.26 to 1.76) | 0.739 | 1.000 | 32,914 | 28 |
 
 Note: Interaction estimates are additional percentage-point differences per 1-SD higher TCM hospital bed density compared with the reference group. Holm adjustment treats the six reported coefficients from five prespecified equity domains as one family. All models include province and survey-year fixed effects and the main covariate set, omitting the stratifying covariate where appropriate.
@@ -163,40 +163,3 @@ Note: Each model reconstructs the primary outcome after omitting the named compo
 | 2015 to 2018 | 9,814 | 8,297 | 84.5 |
 
 Note: Subsequent observation combines continued eligibility and survey participation; it should not be interpreted as pure non-response because death and other reasons for non-observation are not separated in this table.
-
-## Supplementary Table 9. Policy-source evidence hierarchy and design use
-
-| policy source | year | source status | design role in this study | reason not used as primary treatment exposure |
-| --- | --- | --- | --- | --- |
-| Basic public health service TCM service project recommendation notice | 2011 | Official NATCM page archived | Documents the pilot selection process | Selection was based on local TCM foundations and willingness, so pilot status is likely positively selected |
-| Basic public health service TCM service project trial notice | 2011 | Official NATCM parent page archived; original linked attachments currently return 404; auxiliary Fsou repost archived for source tracing | Highest-priority future quasi-experimental candidate | Trial areas were prefecture-level and county-level; province-year CHARLS exposure cannot assign this treatment without lawful sub-provincial linkage |
-| Grassroots TCM service capacity improvement project launch notice | 2012 | Official NATCM page archived | Context for national supply expansion | National programme context without an untreated province-level comparison in the present panel |
-| National TCM comprehensive reform trial areas | 2009-2013 start dates, summarized in 2014 guidance | Official NATCM page and summary attachment archived | Candidate policy archive with staggered timing | Treated geography is mixed and sparse: province, municipality, district, prefecture, and county units cannot be reduced to a stable province-level DiD design |
-| National Basic Public Health Service Standard, Third Edition | 2017 | Official NHC PDF archived | Late-panel public health TCM standard context | National standard without staggered provincial exposure |
-
-Note: Policy documents were used to interpret the service-expansion environment and to evaluate whether a stronger quasi-experimental design was available. They were not used to assign the primary province-year exposure. The Fsou repost is third-party auxiliary evidence only; it is not an official NATCM attachment file.
-
-## Supplementary Table 10. Province-level physician workload in government-run TCM-category hospitals
-
-| year | provinces | annual outpatient/emergency visits per physician, median | annual outpatient/emergency visits per physician, IQR | annual inpatient bed-days per physician, median | annual inpatient bed-days per physician, IQR | daily outpatient/emergency visits per physician, median | daily inpatient bed-days per physician, median |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 2011 | 31 | 1,656.2 | 1,279.4 to 2,446.6 | 769.4 | 626.4 to 925.7 | 6.6 | 2.1 |
-| 2013 | 31 | 1,640.5 | 1,381.0 to 2,437.5 | 845.0 | 716.4 to 1,044.2 | 6.6 | 2.3 |
-| 2015 | 31 | 1,658.2 | 1,396.0 to 2,389.9 | 828.6 | 705.0 to 1,056.8 | 6.6 | 2.3 |
-| 2018 | 31 | 1,664.4 | 1,290.0 to 2,222.5 | 808.7 | 716.0 to 1,045.5 | 6.6 | 2.2 |
-
-Note: Values summarize official National Administration of Traditional Chinese Medicine B35/B38 province-level service-operation tables for government-run TCM-category hospitals. The workload series supports interpretation of workforce stock and service intensity; it does not measure CHARLS respondents' individual use or replace the main person-wave outcome.
-
-## Supplementary Table 11. Post-2018 national TCM service context
-
-| source year | indicator | value | analysis role |
-| --- | --- | --- | --- |
-| 2024 | TCM-category health-care institutions | 103,704 | Contemporary policy relevance only |
-| 2024 | TCM-category beds | 1,822,803 | Contemporary policy relevance only |
-| 2024 | TCM-category hospital beds | 1,390,115 | Contemporary policy relevance only |
-| 2024 | TCM personnel | 1.159 million | Contemporary policy relevance only |
-| 2024 | TCM-category visits | 1.682 billion | Contemporary policy relevance only |
-| 2024 | Community health centres providing TCM services | 99.7% | Contemporary policy relevance only |
-| 2024 | Township health centres providing TCM services | 99.8% | Contemporary policy relevance only |
-
-Note: Values are from the 2024 national health statistics bulletin. They are not used in the CHARLS 2011-2018 models. They are included only to show that the pre-COVID service-access question remains relevant to later TCM service-system evaluation.

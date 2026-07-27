@@ -135,7 +135,7 @@ province_names <- c(
 )
 
 supply <- read_tsv("results/tcm/province_year_tcm_core_density.tsv", show_col_types = FALSE)
-panel_raw <- read_tsv("local CHARLS analytic table", show_col_types = FALSE)
+panel_raw <- read_tsv("results/tcm/person_wave_tcm_core_density_analysis.tsv", show_col_types = FALSE)
 main_models <- read_tsv("results/tcm/tcm_supply_main_models.tsv", show_col_types = FALSE)
 robustness <- read_tsv("results/tcm/tcm_supply_robustness.tsv", show_col_types = FALSE)
 cluster_checks <- read_tsv("results/tcm/tcm_supply_cluster_sensitivity.tsv", show_col_types = FALSE)
@@ -227,7 +227,7 @@ supply_plot <- supply %>%
     province_label = recode(province, !!!province_names),
     year,
     beds = value_per_10000_population_tcm_hospital_beds,
-    physicians = value_per_10000_population_tcm_physicians
+    physicians = value_per_10000_population_tcm_practicing_assistant_physicians
   ) %>%
   arrange(province, year)
 
@@ -607,7 +607,7 @@ figs1a <- ggplot(specs, aes(spec, effect)) +
   scale_fill_manual(values = c("TRUE" = pal[["supply"]], "FALSE" = "white"), guide = "none") +
   scale_y_continuous(limits = c(-4.5, 5.5), breaks = c(-4, -2, 0, 2, 4)) +
   labs(
-    title = "Estimate multiverse",
+    title = "Sensitivity estimates",
     subtitle = "Percentage-point difference per 1-SD higher province-year supply",
     x = NULL,
     y = "Estimate (95% CI)"
