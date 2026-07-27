@@ -1,0 +1,20 @@
+model	term	term_label	two_way_fe_vif	maximum_absolute_pairwise_correlation	design_condition_index	province_years	provinces	waves	diagnostic_scale
+C0	z_tcm_beds	TCM hospital beds per 10,000 population	1	0	1	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C1	z_tcm_beds	TCM hospital beds per 10,000 population	1.11904	0.32615	1.40287	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C1	z_comprehensive_beds	Comprehensive-hospital beds per 10,000 population	1.11904	0.32615	1.40287	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C2	z_tcm_beds	TCM hospital beds per 10,000 population	1.06355	0.18723	1.69746	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C2	z_log_gdp	Log provincial GDP per capita	1.26308	0.433	1.69746	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C2	z_urbanization	Urban population share	1.30416	0.433	1.69746	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C3	z_tcm_beds	TCM hospital beds per 10,000 population	1.1563	0.32615	2.42203	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C3	z_comprehensive_beds	Comprehensive-hospital beds per 10,000 population	1.81171	0.63162	2.42203	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C3	z_log_gdp	Log provincial GDP per capita	1.27292	0.433	2.42203	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C3	z_urbanization	Urban population share	1.86692	0.63162	2.42203	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C4	z_tcm_beds	TCM hospital beds per 10,000 population	1.20007	0.32615	2.76762	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C4	z_comprehensive_beds	Comprehensive-hospital beds per 10,000 population	2.02134	0.63162	2.76762	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C4	z_log_gdp	Log provincial GDP per capita	1.32068	0.433	2.76762	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C4	z_urbanization	Urban population share	2.11243	0.63162	2.76762	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C4	z_age_65_plus	Population aged 65 years or older	1.26435	0.30246	2.76762	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C5	z_tcm_beds	TCM hospital beds per 10,000 population	1.51007	0.53842	2.43848	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C5	z_total_hospital_beds	All hospital beds per 10,000 population	1.94306	0.53842	2.43848	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C5	z_log_gdp	Log provincial GDP per capita	1.30469	0.433	2.43848	112	28	4	province-year exposure residuals after province and survey-year fixed effects
+C5	z_urbanization	Urban population share	1.55978	0.51582	2.43848	112	28	4	province-year exposure residuals after province and survey-year fixed effects

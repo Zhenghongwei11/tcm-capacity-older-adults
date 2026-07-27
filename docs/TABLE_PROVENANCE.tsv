@@ -1,0 +1,3 @@
+table	public_table_file	primary_source_tables	rebuild_script
+Tables 1-4 and Tables S1-S11	tables/tables.md	results/tcm/*.tsv	scripts/tcm/build_reported_tables.R
+Supplementary tables workbook	outputs/supplementary_tables.xlsx	tables/tables.md	scripts/tcm/build_reported_tables.R

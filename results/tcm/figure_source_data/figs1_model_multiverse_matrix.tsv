@@ -1,0 +1,235 @@
+spec	feature	active
+S1	Adjusted respondent weight	FALSE
+S1	Age 45+	FALSE
+S1	Age 60+	TRUE
+S1	Bed density	TRUE
+S1	Broader outcome	FALSE
+S1	Concurrent	TRUE
+S1	Full adjustment	TRUE
+S1	Individual FE	FALSE
+S1	Lagged	FALSE
+S1	Minimal adjustment	FALSE
+S1	Mundlak	FALSE
+S1	No income covariate	FALSE
+S1	Physician density	FALSE
+S1	Primary outcome	TRUE
+S1	Province clustered	TRUE
+S1	Province resampling	FALSE
+S1	Province trends	FALSE
+S1	Strict outcome	FALSE
+S2	Adjusted respondent weight	FALSE
+S2	Age 45+	FALSE
+S2	Age 60+	TRUE
+S2	Bed density	FALSE
+S2	Broader outcome	FALSE
+S2	Concurrent	TRUE
+S2	Full adjustment	TRUE
+S2	Individual FE	FALSE
+S2	Lagged	FALSE
+S2	Minimal adjustment	FALSE
+S2	Mundlak	FALSE
+S2	No income covariate	FALSE
+S2	Physician density	TRUE
+S2	Primary outcome	TRUE
+S2	Province clustered	TRUE
+S2	Province resampling	FALSE
+S2	Province trends	FALSE
+S2	Strict outcome	FALSE
+S3	Adjusted respondent weight	FALSE
+S3	Age 45+	FALSE
+S3	Age 60+	TRUE
+S3	Bed density	TRUE
+S3	Broader outcome	FALSE
+S3	Concurrent	TRUE
+S3	Full adjustment	FALSE
+S3	Individual FE	FALSE
+S3	Lagged	FALSE
+S3	Minimal adjustment	TRUE
+S3	Mundlak	FALSE
+S3	No income covariate	FALSE
+S3	Physician density	FALSE
+S3	Primary outcome	TRUE
+S3	Province clustered	TRUE
+S3	Province resampling	FALSE
+S3	Province trends	FALSE
+S3	Strict outcome	FALSE
+S4	Adjusted respondent weight	FALSE
+S4	Age 45+	TRUE
+S4	Age 60+	FALSE
+S4	Bed density	TRUE
+S4	Broader outcome	FALSE
+S4	Concurrent	TRUE
+S4	Full adjustment	TRUE
+S4	Individual FE	FALSE
+S4	Lagged	FALSE
+S4	Minimal adjustment	FALSE
+S4	Mundlak	FALSE
+S4	No income covariate	FALSE
+S4	Physician density	FALSE
+S4	Primary outcome	TRUE
+S4	Province clustered	TRUE
+S4	Province resampling	FALSE
+S4	Province trends	FALSE
+S4	Strict outcome	FALSE
+S5	Adjusted respondent weight	FALSE
+S5	Age 45+	FALSE
+S5	Age 60+	TRUE
+S5	Bed density	TRUE
+S5	Broader outcome	FALSE
+S5	Concurrent	TRUE
+S5	Full adjustment	FALSE
+S5	Individual FE	FALSE
+S5	Lagged	FALSE
+S5	Minimal adjustment	FALSE
+S5	Mundlak	FALSE
+S5	No income covariate	TRUE
+S5	Physician density	FALSE
+S5	Primary outcome	TRUE
+S5	Province clustered	TRUE
+S5	Province resampling	FALSE
+S5	Province trends	FALSE
+S5	Strict outcome	FALSE
+S6	Adjusted respondent weight	FALSE
+S6	Age 45+	FALSE
+S6	Age 60+	TRUE
+S6	Bed density	TRUE
+S6	Broader outcome	FALSE
+S6	Concurrent	FALSE
+S6	Full adjustment	TRUE
+S6	Individual FE	FALSE
+S6	Lagged	TRUE
+S6	Minimal adjustment	FALSE
+S6	Mundlak	FALSE
+S6	No income covariate	FALSE
+S6	Physician density	FALSE
+S6	Primary outcome	TRUE
+S6	Province clustered	TRUE
+S6	Province resampling	FALSE
+S6	Province trends	FALSE
+S6	Strict outcome	FALSE
+S7	Adjusted respondent weight	FALSE
+S7	Age 45+	FALSE
+S7	Age 60+	TRUE
+S7	Bed density	TRUE
+S7	Broader outcome	FALSE
+S7	Concurrent	TRUE
+S7	Full adjustment	TRUE
+S7	Individual FE	FALSE
+S7	Lagged	FALSE
+S7	Minimal adjustment	FALSE
+S7	Mundlak	FALSE
+S7	No income covariate	FALSE
+S7	Physician density	FALSE
+S7	Primary outcome	FALSE
+S7	Province clustered	TRUE
+S7	Province resampling	FALSE
+S7	Province trends	FALSE
+S7	Strict outcome	TRUE
+S8	Adjusted respondent weight	FALSE
+S8	Age 45+	FALSE
+S8	Age 60+	TRUE
+S8	Bed density	TRUE
+S8	Broader outcome	TRUE
+S8	Concurrent	TRUE
+S8	Full adjustment	TRUE
+S8	Individual FE	FALSE
+S8	Lagged	FALSE
+S8	Minimal adjustment	FALSE
+S8	Mundlak	FALSE
+S8	No income covariate	FALSE
+S8	Physician density	FALSE
+S8	Primary outcome	FALSE
+S8	Province clustered	TRUE
+S8	Province resampling	FALSE
+S8	Province trends	FALSE
+S8	Strict outcome	FALSE
+S9	Adjusted respondent weight	FALSE
+S9	Age 45+	FALSE
+S9	Age 60+	TRUE
+S9	Bed density	TRUE
+S9	Broader outcome	FALSE
+S9	Concurrent	TRUE
+S9	Full adjustment	TRUE
+S9	Individual FE	FALSE
+S9	Lagged	FALSE
+S9	Minimal adjustment	FALSE
+S9	Mundlak	FALSE
+S9	No income covariate	FALSE
+S9	Physician density	FALSE
+S9	Primary outcome	TRUE
+S9	Province clustered	FALSE
+S9	Province resampling	TRUE
+S9	Province trends	FALSE
+S9	Strict outcome	FALSE
+S10	Adjusted respondent weight	TRUE
+S10	Age 45+	FALSE
+S10	Age 60+	TRUE
+S10	Bed density	TRUE
+S10	Broader outcome	FALSE
+S10	Concurrent	TRUE
+S10	Full adjustment	TRUE
+S10	Individual FE	FALSE
+S10	Lagged	FALSE
+S10	Minimal adjustment	FALSE
+S10	Mundlak	FALSE
+S10	No income covariate	FALSE
+S10	Physician density	FALSE
+S10	Primary outcome	TRUE
+S10	Province clustered	FALSE
+S10	Province resampling	FALSE
+S10	Province trends	FALSE
+S10	Strict outcome	FALSE
+S11	Adjusted respondent weight	FALSE
+S11	Age 45+	FALSE
+S11	Age 60+	TRUE
+S11	Bed density	TRUE
+S11	Broader outcome	FALSE
+S11	Concurrent	TRUE
+S11	Full adjustment	FALSE
+S11	Individual FE	TRUE
+S11	Lagged	FALSE
+S11	Minimal adjustment	FALSE
+S11	Mundlak	FALSE
+S11	No income covariate	FALSE
+S11	Physician density	FALSE
+S11	Primary outcome	TRUE
+S11	Province clustered	TRUE
+S11	Province resampling	FALSE
+S11	Province trends	FALSE
+S11	Strict outcome	FALSE
+S12	Adjusted respondent weight	FALSE
+S12	Age 45+	FALSE
+S12	Age 60+	TRUE
+S12	Bed density	TRUE
+S12	Broader outcome	FALSE
+S12	Concurrent	TRUE
+S12	Full adjustment	FALSE
+S12	Individual FE	FALSE
+S12	Lagged	FALSE
+S12	Minimal adjustment	FALSE
+S12	Mundlak	TRUE
+S12	No income covariate	FALSE
+S12	Physician density	FALSE
+S12	Primary outcome	TRUE
+S12	Province clustered	TRUE
+S12	Province resampling	FALSE
+S12	Province trends	FALSE
+S12	Strict outcome	FALSE
+S13	Adjusted respondent weight	FALSE
+S13	Age 45+	FALSE
+S13	Age 60+	TRUE
+S13	Bed density	TRUE
+S13	Broader outcome	FALSE
+S13	Concurrent	TRUE
+S13	Full adjustment	FALSE
+S13	Individual FE	FALSE
+S13	Lagged	FALSE
+S13	Minimal adjustment	FALSE
+S13	Mundlak	FALSE
+S13	No income covariate	FALSE
+S13	Physician density	FALSE
+S13	Primary outcome	TRUE
+S13	Province clustered	TRUE
+S13	Province resampling	FALSE
+S13	Province trends	TRUE
+S13	Strict outcome	FALSE

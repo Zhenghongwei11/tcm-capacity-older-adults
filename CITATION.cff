@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this code or derived tables, please cite the archived release."
+title: "Code and derived data for longitudinal analysis of traditional Chinese medicine service capacity and realized use among older adults in China"
+authors:
+  - family-names: Zheng
+    given-names: Hongwei
+    email: lgmoon@qzmc.edu.cn
+  - family-names: Bu
+    given-names: Wanping
+    email: 2018029@qzmc.edu.cn
+repository-code: "https://github.com/Zhenghongwei11/tcm-capacity-older-adults"
+date-released: "2026-07-27"
+license: MIT

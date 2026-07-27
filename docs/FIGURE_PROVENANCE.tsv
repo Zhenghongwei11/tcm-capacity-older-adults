@@ -1,0 +1,6 @@
+figure	output_files	source_data	rebuild_script
+Figure 1	plots/publication/fig1_two_longitudinal_systems.pdf; plots/publication/fig1_two_longitudinal_systems.png	results/tcm/figure_source_data/fig1_individual_use_trajectories.tsv; results/tcm/figure_source_data/fig1_provincial_capacity_trajectories.tsv	scripts/tcm/make_publication_figures.R
+Figure 2	plots/publication/fig2_supply_to_realized_use.pdf; plots/publication/fig2_supply_to_realized_use.png	results/tcm/figure_source_data/fig2_partial_association_bins.tsv; results/tcm/figure_source_data/fig2_leave_one_province_out.tsv	scripts/tcm/make_publication_figures.R
+Figure 3	plots/publication/fig3_need_and_equity_paths.pdf; plots/publication/fig3_need_and_equity_paths.png	results/tcm/figure_source_data/fig3_formal_interaction_contrasts.tsv	scripts/tcm/make_publication_figures.R
+Supplementary Figure 1	plots/publication/figs1_model_multiverse.pdf; plots/publication/figs1_model_multiverse.png	results/tcm/figure_source_data/figs1_model_multiverse_estimates.tsv; results/tcm/figure_source_data/figs1_model_multiverse_matrix.tsv	scripts/tcm/make_publication_figures.R
+Supplementary Figure 2	plots/publication/figs2_outcome_observability.pdf; plots/publication/figs2_outcome_observability.png	results/tcm/figure_source_data/figs2_outcome_observability.tsv	scripts/tcm/make_publication_figures.R

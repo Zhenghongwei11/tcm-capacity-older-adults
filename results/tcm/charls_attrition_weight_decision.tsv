@@ -1,0 +1,2 @@
+method	status	reason	retained_analysis	implication
+inverse probability of subsequent observation weighting	not_implemented	The age-eligible panel combines ageing into eligibility, death, non-response, and replenishment; the available analysis table does not identify a common censoring mechanism across all four waves.	wave-specific adjusted respondent-weight sensitivity	Observation patterns and retention comparisons are reported directly; no attrition weight is presented as if it recovered a single four-wave target population.

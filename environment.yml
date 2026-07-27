@@ -1,0 +1,21 @@
+name: tcm-capacity-older-adults
+channels:
+  - conda-forge
+dependencies:
+  - r-base>=4.3
+  - r-dplyr
+  - r-readr
+  - r-readxl
+  - r-stringr
+  - r-tidyr
+  - r-tibble
+  - r-haven
+  - r-ggplot2
+  - r-ggalluvial
+  - r-ggrepel
+  - r-ggridges
+  - r-patchwork
+  - r-scales
+  - r-fixest
+  - r-purrr
+  - r-rvest

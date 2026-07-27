@@ -1,0 +1,15 @@
+data/raw/charls/
+data/processed/charls/
+results/tcm/person_wave_*.tsv
+results/tcm/*local_only*
+results/tcm/charls_city_sample_frame.tsv
+*.dta
+*.sav
+*.sas7bdat
+*.rar
+*.zip
+*.7z
+*.RData
+*.rds
+.DS_Store
+.env

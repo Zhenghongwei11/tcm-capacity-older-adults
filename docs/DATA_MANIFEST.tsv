@@ -1,0 +1,9 @@
+source_id	source_name	years	access	url_or_instruction	public_release_note
+charls_regular_waves	China Health and Retirement Longitudinal Study regular waves	2011;2013;2015;2018	registered user access	https://charls.pku.edu.cn/en/	Source files are not redistributed. Users must obtain them from CHARLS.
+harmonized_charls_vd	Harmonized CHARLS Version D	2011;2013;2015;2018	registered user access	https://g2aging.org/	Source files are not redistributed.
+natcm_2011_a86	National TCM statistical extract table A86	2011	public official table	http://www.natcm.gov.cn/2020tjzb/%E5%85%A8%E5%9B%BD%E4%B8%AD%E5%8C%BB%E8%8D%AF%E7%BB%9F%E8%AE%A1%E6%91%98%E7%BC%96/atog/2011/A86.xlsx	Derived province-year values are included.
+natcm_2013_a95	National TCM statistical extract table A95	2013	public official table	http://www.natcm.gov.cn/2020tjzb/%E5%85%A8%E5%9B%BD%E4%B8%AD%E5%8C%BB%E8%8D%AF%E7%BB%9F%E8%AE%A1%E6%91%98%E7%BC%96/atog/2013/A95.xls	Derived province-year values are included.
+natcm_2015_a95	National TCM statistical extract table A95	2015	public official table	http://www.natcm.gov.cn/2020tjzb/%E5%85%A8%E5%9B%BD%E4%B8%AD%E5%8C%BB%E8%8D%AF%E7%BB%9F%E8%AE%A1%E6%91%98%E7%BC%96/atog/2015/A95.xls	Derived province-year values are included.
+natcm_2018_a95	National TCM statistical extract table A95	2018	public official table	http://www.natcm.gov.cn/2020tjzb/%E5%85%A8%E5%9B%BD%E4%B8%AD%E5%8C%BB%E8%8D%AF%E7%BB%9F%E8%AE%A1%E6%91%98%E7%BC%96/atog/2018/A95.xlsx	Derived province-year values are included.
+nhc_health_yearbooks	China Health Statistical Yearbook and China Health and Family Planning Statistical Yearbook	2012;2014;2016;2019	public official references	https://www.nhc.gov.cn/	Derived province-year bed covariates are included; full yearbook PDFs are not redistributed.
+nbs_statistical_yearbooks	China Statistical Yearbook	2012;2014;2016;2019	public official tables	https://www.stats.gov.cn/sj/ndsj/	Derived province-year socioeconomic covariates are included.
