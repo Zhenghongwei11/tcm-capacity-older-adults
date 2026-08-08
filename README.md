@@ -38,4 +38,4 @@ The repository excludes raw CHARLS files, row-level person-wave analytic tables,
 
 ## Citation
 
-If using this repository, cite the archived release corresponding to the version used and cite CHARLS and the official statistical sources according to their source requirements. The current repository version is v1.0.2.
+If using this repository, cite the archived release corresponding to the version used and cite CHARLS and the official statistical sources according to their source requirements. The current repository version is v1.0.2: https://doi.org/10.5281/zenodo.21849158.
