@@ -16,7 +16,7 @@ argval <- function(flag, default = NULL) {
 
 analysis_tsv <- argval(
   "--analysis",
-  "local CHARLS analytic table"
+  "results/tcm/person_wave_tcm_core_density_analysis.tsv"
 )
 out_tsv <- argval(
   "--output",
@@ -37,13 +37,13 @@ base <- read_tsv(analysis_tsv, show_col_types = FALSE) %>%
 supply_panel <- base %>%
   distinct(
     province_supply_key, year,
-    value_per_10000_population_tcm_physicians,
+    value_per_10000_population_tcm_practicing_assistant_physicians,
     value_per_10000_population_tcm_hospital_beds
   ) %>%
   arrange(province_supply_key, year) %>%
   group_by(province_supply_key) %>%
   mutate(
-    lag_tcm_physicians_per_10000 = lag(value_per_10000_population_tcm_physicians),
+    lag_tcm_physicians_per_10000 = lag(value_per_10000_population_tcm_practicing_assistant_physicians),
     lag_tcm_beds_per_10000 = lag(value_per_10000_population_tcm_hospital_beds)
   ) %>%
   ungroup() %>%
@@ -56,8 +56,8 @@ supply_panel <- base %>%
 analysis <- base %>%
   left_join(supply_panel, by = c("province_supply_key", "year")) %>%
   mutate(
-    z_tcm_physicians_per_10000 = as.numeric(scale(value_per_10000_population_tcm_physicians)),
-    z_tcm_beds_per_10000 = as.numeric(scale(value_per_10000_population_tcm_hospital_beds)),
+    z_tcm_physicians_per_10000 = z_py_tcm_physicians_per_10000,
+    z_tcm_beds_per_10000 = z_py_tcm_beds_per_10000,
     primary = as.numeric(primary_condition_tcm_any),
     strict_visit = as.numeric(strict_tcm_hospital_visit),
     broader = as.numeric(broader_tcm_use_2011_2015)

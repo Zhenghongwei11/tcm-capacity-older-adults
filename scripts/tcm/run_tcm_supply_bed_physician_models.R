@@ -16,7 +16,7 @@ argval <- function(flag, default = NULL) {
 
 analysis_tsv <- argval(
   "--analysis",
-  "local CHARLS analytic table"
+  "results/tcm/person_wave_tcm_core_density_analysis.tsv"
 )
 context_tsv <- argval(
   "--context",
@@ -69,7 +69,7 @@ supply_panel <- read_tsv(context_tsv, show_col_types = FALSE) %>%
     province_supply_key = province,
     year = as.integer(year),
     tcm_beds = value_per_10000_population_tcm_hospital_beds,
-    tcm_physicians = value_per_10000_population_tcm_physicians
+    tcm_physicians = value_per_10000_population_tcm_practicing_assistant_physicians
   ) %>%
   arrange(province_supply_key, year) %>%
   group_by(province_supply_key) %>%
@@ -91,13 +91,13 @@ analysis <- read_tsv(analysis_tsv, show_col_types = FALSE) %>%
     education_group = factor(education_group),
     household_income_quartile = factor(household_income_quartile),
     outcome_primary = as.numeric(primary_condition_tcm_any),
-    z_tcm_beds = as.numeric(scale(value_per_10000_population_tcm_hospital_beds)),
-    z_tcm_physicians = as.numeric(scale(value_per_10000_population_tcm_physicians)),
+    z_tcm_beds = z_py_tcm_beds_per_10000,
+    z_tcm_physicians = z_py_tcm_physicians_per_10000,
     z_lag_tcm_beds = as.numeric(scale(lag_tcm_beds)),
     z_lag_tcm_physicians = as.numeric(scale(lag_tcm_physicians)),
-    z_comprehensive_beds = as.numeric(scale(value_per_10000_population_comprehensive_hospital_beds)),
-    z_log_gdp = as.numeric(scale(log_gdp_per_capita_current_yuan)),
-    z_urbanization = as.numeric(scale(urban_population_percent))
+    z_comprehensive_beds = z_py_comprehensive_hospital_beds,
+    z_log_gdp = z_py_log_gdp,
+    z_urbanization = z_py_urbanization
   )
 
 individual_covariates <- c(

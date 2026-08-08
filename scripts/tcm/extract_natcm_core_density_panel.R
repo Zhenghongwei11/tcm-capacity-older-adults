@@ -95,9 +95,9 @@ extract_one <- function(year, table_id, path, url, expected_beds, expected_physi
       value_tcm_hospital_beds = suppressWarnings(as.numeric(...3)),
       value_per_10000_population_tcm_hospital_beds = suppressWarnings(as.numeric(...4)),
       rank_tcm_hospital_beds_per_10000 = suppressWarnings(as.integer(...5)),
-      value_tcm_physicians = suppressWarnings(as.numeric(...6)),
-      value_per_10000_population_tcm_physicians = suppressWarnings(as.numeric(...7)),
-      rank_tcm_physicians_per_10000 = suppressWarnings(as.integer(...8))
+      value_tcm_practicing_assistant_physicians = suppressWarnings(as.numeric(...6)),
+      value_per_10000_population_tcm_practicing_assistant_physicians = suppressWarnings(as.numeric(...7)),
+      rank_tcm_practicing_assistant_physicians_per_10000 = suppressWarnings(as.integer(...8))
     ) %>%
     inner_join(province_map, by = "province_raw") %>%
     transmute(
@@ -124,13 +124,13 @@ extract_one <- function(year, table_id, path, url, expected_beds, expected_physi
       denominator_source_id = paste0("natcm_", year, "_extract_", tolower(table_id)),
       denominator_notes = "NATCM table reports province population in 10,000 persons; converted to persons.",
       value_tcm_hospital_beds,
-      value_tcm_physicians,
+      value_tcm_practicing_assistant_physicians,
       value_per_10000_population_tcm_hospital_beds,
-      value_per_10000_population_tcm_physicians,
+      value_per_10000_population_tcm_practicing_assistant_physicians,
       rank_tcm_hospital_beds_per_10000,
-      rank_tcm_physicians_per_10000,
+      rank_tcm_practicing_assistant_physicians_per_10000,
       unit_tcm_hospital_beds = "beds",
-      unit_tcm_physicians = "persons",
+      unit_tcm_practicing_assistant_physicians = "persons",
       notes = "Official NATCM Excel table; main core-density supply exposure."
     ) %>%
     arrange(province)
@@ -141,7 +141,7 @@ extract_one <- function(year, table_id, path, url, expected_beds, expected_physi
   if (sum(out$value_tcm_hospital_beds) != expected_beds) {
     stop(sprintf("Unexpected bed total for %s", year))
   }
-  if (sum(out$value_tcm_physicians) != expected_physicians) {
+  if (sum(out$value_tcm_practicing_assistant_physicians) != expected_physicians) {
     stop(sprintf("Unexpected physician total for %s", year))
   }
   out
@@ -159,6 +159,6 @@ print(panel %>% count(year, source, table_id))
 print(panel %>% group_by(year) %>% summarise(
   provinces = n(),
   beds_total = sum(value_tcm_hospital_beds),
-  physicians_total = sum(value_tcm_physicians),
+  physicians_total = sum(value_tcm_practicing_assistant_physicians),
   .groups = "drop"
 ))

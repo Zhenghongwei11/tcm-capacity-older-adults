@@ -14,7 +14,7 @@ argval <- function(flag, default = NULL) {
   args[[idx + 1]]
 }
 
-analysis_tsv <- argval("--analysis", "local CHARLS analytic table")
+analysis_tsv <- argval("--analysis", "results/tcm/person_wave_tcm_core_density_analysis.tsv")
 out_tsv <- argval("--output", "results/tcm/tcm_supply_weighted_attrition_models.tsv")
 
 if (!file.exists(analysis_tsv)) stop(sprintf("Missing analysis table: %s", analysis_tsv))
@@ -35,7 +35,7 @@ d <- read_tsv(analysis_tsv, show_col_types = FALSE) %>%
     education_group = factor(education_group),
     household_income_quartile = factor(household_income_quartile),
     outcome_primary = as.numeric(primary_condition_tcm_any),
-    z_tcm_beds_per_10000 = as.numeric(scale(value_per_10000_population_tcm_hospital_beds))
+    z_tcm_beds_per_10000 = z_py_tcm_beds_per_10000
   ) %>%
   group_by(year) %>%
   mutate(

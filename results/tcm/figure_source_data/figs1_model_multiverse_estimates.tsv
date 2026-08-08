@@ -1,14 +1,14 @@
 spec	label	effect	ci_lower	ci_upper	exposure	population	outcome_group	timing	adjustment	uncertainty	supported
-S1	Primary bed-density model	1.86577	0.16959	3.56194	Bed density	Age 60+	Primary outcome	Concurrent	Full adjustment	Province clustered	TRUE
-S2	Physician-density indicator	-0.70095	-4.03905	2.63716	Physician density	Age 60+	Primary outcome	Concurrent	Full adjustment	Province clustered	FALSE
-S3	Minimal adjustment	1.89754	-0.01709	3.81218	Bed density	Age 60+	Primary outcome	Concurrent	Minimal adjustment	Province clustered	FALSE
-S4	Age 45+	1.27031	0.09981	2.44081	Bed density	Age 45+	Primary outcome	Concurrent	Full adjustment	Province clustered	TRUE
-S5	Income omitted	1.81944	0.14919	3.4897	Bed density	Age 60+	Primary outcome	Concurrent	No income covariate	Province clustered	TRUE
+S1	Primary bed-density model	2.05803	0.18707	3.92899	Bed density	Age 60+	Primary outcome	Concurrent	Full adjustment	Province clustered	TRUE
+S2	Physician-density indicator	-0.77373	-4.45844	2.91098	Physician density	Age 60+	Primary outcome	Concurrent	Full adjustment	Province clustered	FALSE
+S3	Minimal adjustment	2.09308	-0.01885	4.20501	Bed density	Age 60+	Primary outcome	Concurrent	Minimal adjustment	Province clustered	FALSE
+S4	Age 45+	1.4077	0.11061	2.70478	Bed density	Age 45+	Primary outcome	Concurrent	Full adjustment	Province clustered	TRUE
+S5	Income omitted	2.01621	0.16532	3.8671	Bed density	Age 60+	Primary outcome	Concurrent	No income covariate	Province clustered	TRUE
 S6	Lagged bed density	0.0759	-2.03936	2.19117	Bed density	Age 60+	Primary outcome	Lagged	Full adjustment	Province clustered	FALSE
-S7	Strict hospital visit	0.26242	0.0074400000000000004	0.51741	Bed density	Age 60+	Strict outcome	Concurrent	Full adjustment	Province clustered	TRUE
-S8	Broader use	1.45809	-2.11384	5.03003	Bed density	Age 60+	Broader outcome	Concurrent	Full adjustment	Province clustered	FALSE
-S9	Province resampling	1.80744	-0.68695	3.28022	Bed density	Age 60+	Primary outcome	Concurrent	Full adjustment	Province resampling	FALSE
-S10	Adjusted respondent weight	0.66688	-1.26269	2.59645	Bed density	Age 60+	Primary outcome	Concurrent	Full adjustment	Adjusted respondent weight	FALSE
-S11	Individual fixed effects	1.83137	-0.20211	3.86485	Bed density	Age 60+	Primary outcome	Concurrent	Individual FE	Province clustered	FALSE
-S12	Mundlak correlated effects	1.77077	0.06142	3.48012	Bed density	Age 60+	Primary outcome	Concurrent	Mundlak	Province clustered	TRUE
-S13	Province-specific trends	1.05073	-2.19743	4.29889	Bed density	Age 60+	Primary outcome	Concurrent	Province trends	Province clustered	FALSE
+S7	Strict hospital visit	0.2908	0.00824	0.57337	Bed density	Age 60+	Strict outcome	Concurrent	Full adjustment	Province clustered	TRUE
+S8	Broader use	1.61578	-2.34245	5.57402	Bed density	Age 60+	Broader outcome	Concurrent	Full adjustment	Province clustered	FALSE
+S9	Province resampling	1.99369	-0.75773	3.61824	Bed density	Age 60+	Primary outcome	Concurrent	Full adjustment	Province resampling	FALSE
+S10	Adjusted respondent weight	0.7356	-1.39281	2.864	Bed density	Age 60+	Primary outcome	Concurrent	Full adjustment	Adjusted respondent weight	FALSE
+S11	Individual fixed effects	2.02009	-0.22294	4.26311	Bed density	Age 60+	Primary outcome	Concurrent	Individual FE	Province clustered	FALSE
+S12	Mundlak correlated effects	1.95324	0.06774	3.83874	Bed density	Age 60+	Primary outcome	Concurrent	Mundlak	Province clustered	TRUE
+S13	Province-specific trends	1.15901	-2.42387	4.74189	Bed density	Age 60+	Primary outcome	Concurrent	Province trends	Province clustered	FALSE

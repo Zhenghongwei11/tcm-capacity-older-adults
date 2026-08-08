@@ -14,7 +14,7 @@ argval <- function(flag, default = NULL) {
   args[[idx + 1]]
 }
 
-analysis_tsv <- argval("--analysis", "local CHARLS analytic table")
+analysis_tsv <- argval("--analysis", "results/tcm/person_wave_tcm_core_density_analysis.tsv")
 weight_out <- argval("--weight-output", "results/tcm/charls_weight_audit.tsv")
 flow_out <- argval("--flow-output", "results/tcm/charls_participant_flow.tsv")
 pattern_out <- argval("--pattern-output", "results/tcm/charls_longitudinal_observation_patterns.tsv")

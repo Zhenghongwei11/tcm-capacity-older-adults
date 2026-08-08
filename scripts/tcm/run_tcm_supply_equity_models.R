@@ -16,7 +16,7 @@ argval <- function(flag, default = NULL) {
 
 analysis_tsv <- argval(
   "--analysis",
-  "local CHARLS analytic table"
+  "results/tcm/person_wave_tcm_core_density_analysis.tsv"
 )
 out_tsv <- argval(
   "--output",
@@ -38,8 +38,8 @@ analysis <- read_tsv(analysis_tsv, show_col_types = FALSE) %>%
     wave_fe = factor(year),
     education_group = factor(education_group),
     household_income_quartile = factor(household_income_quartile),
-    z_tcm_physicians_per_10000 = as.numeric(scale(value_per_10000_population_tcm_physicians)),
-    z_tcm_beds_per_10000 = as.numeric(scale(value_per_10000_population_tcm_hospital_beds)),
+    z_tcm_physicians_per_10000 = z_py_tcm_physicians_per_10000,
+    z_tcm_beds_per_10000 = z_py_tcm_beds_per_10000,
     outcome_primary = as.numeric(primary_condition_tcm_any),
     equity_rural_community = case_when(
       rural_community == 1 ~ "rural",

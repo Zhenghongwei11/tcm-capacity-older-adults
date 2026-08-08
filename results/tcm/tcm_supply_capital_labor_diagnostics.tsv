@@ -1,0 +1,10 @@
+model	model_label	exposure	two_way_fe_vif	maximum_absolute_pairwise_correlation	design_condition_index	n_province_years	n_provinces	diagnostic_note
+CL1	Bed-to-physician ratio only	TCM hospital beds per TCM physician	1	0	1	112	28	Province-year exposure residuals after province and survey-year fixed effects
+CL2	Bed density and physician density	TCM hospital beds per 10,000 population	1.27532	0.46463	1.65401	112	28	Province-year exposure residuals after province and survey-year fixed effects
+CL2	Bed density and physician density	TCM physicians per 10,000 population	1.27532	0.46463	1.65401	112	28	Province-year exposure residuals after province and survey-year fixed effects
+CL3	Bed density, physician density, and bed-to-physician ratio	TCM hospital beds per 10,000 population	3.98122	0.63525	3.74764	112	28	Province-year exposure residuals after province and survey-year fixed effects
+CL3	Bed density, physician density, and bed-to-physician ratio	TCM physicians per 10,000 population	2.45295	0.46463	3.74764	112	28	Province-year exposure residuals after province and survey-year fixed effects
+CL3	Bed density, physician density, and bed-to-physician ratio	TCM hospital beds per TCM physician	3.2247	0.63525	3.74764	112	28	Province-year exposure residuals after province and survey-year fixed effects
+CL4	Bed density, physician density, and their interaction	TCM hospital beds per 10,000 population	1.79538	0.6649	3.2336	112	28	Province-year exposure residuals after province and survey-year fixed effects
+CL4	Bed density, physician density, and their interaction	TCM physicians per 10,000 population	2.14524	0.73012	3.2336	112	28	Province-year exposure residuals after province and survey-year fixed effects
+CL4	Bed density, physician density, and their interaction	Interaction between TCM bed density and physician density	3.01501	0.73012	3.2336	112	28	Province-year exposure residuals after province and survey-year fixed effects

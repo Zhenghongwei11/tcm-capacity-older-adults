@@ -16,7 +16,7 @@ argval <- function(flag, default = NULL) {
 
 analysis_tsv <- argval(
   "--analysis",
-  "local CHARLS analytic table"
+  "results/tcm/person_wave_tcm_core_density_analysis.tsv"
 )
 context_tsv <- argval(
   "--context",
@@ -128,12 +128,12 @@ analysis <- read_tsv(analysis_tsv, show_col_types = FALSE) %>%
     education_group = factor(education_group),
     household_income_quartile = factor(household_income_quartile),
     outcome_primary = as.numeric(primary_condition_tcm_any),
-    z_tcm_beds = as.numeric(scale(value_per_10000_population_tcm_hospital_beds)),
-    z_comprehensive_beds = as.numeric(scale(value_per_10000_population_comprehensive_hospital_beds)),
-    z_total_hospital_beds = as.numeric(scale(value_per_10000_population_hospital_beds)),
-    z_log_gdp = as.numeric(scale(log_gdp_per_capita_current_yuan)),
-    z_urbanization = as.numeric(scale(urban_population_percent)),
-    z_age_65_plus = as.numeric(scale(population_age_65_plus_percent))
+    z_tcm_beds = z_py_tcm_beds_per_10000,
+    z_comprehensive_beds = z_py_comprehensive_hospital_beds,
+    z_total_hospital_beds = z_py_hospital_beds,
+    z_log_gdp = z_py_log_gdp,
+    z_urbanization = z_py_urbanization,
+    z_age_65_plus = z_py_age_65_plus
   )
 
 if (anyNA(analysis[c(

@@ -357,7 +357,7 @@ supp_retention <- retention %>%
   )
 
 tables_md <- c(
-  "# Manuscript Tables",
+  "# Reported Tables",
   "",
   "## Table 1. Characteristics of CHARLS respondents aged 60 years or older in the linked descriptive sample",
   "",
@@ -423,6 +423,8 @@ tables_md <- c(
   "",
   md_table(supp_flow),
   "",
+  "Note: Respondents and person-wave observations are shown at each analytic restriction. The complete-covariate stage defines the primary fully adjusted analysis sample; the final row defines the weighted sensitivity-analysis sample.",
+  "",
   "## Supplementary Table 8. Wave-to-wave observation among age-eligible respondents",
   "",
   md_table(supp_retention),
@@ -430,5 +432,5 @@ tables_md <- c(
   "Note: Subsequent observation combines continued eligibility and survey participation; it should not be interpreted as pure non-response because death and other reasons for non-observation are not separated in this table."
 )
 
-write_lines(tables_md, file.path(out_dir, "tables.md"))
-cat("Wrote tables/tables.md\n")
+write_lines(tables_md, file.path(out_dir, "generated_tables_from_results.md"))
+cat("Wrote tables/generated_tables_from_results.md\n")

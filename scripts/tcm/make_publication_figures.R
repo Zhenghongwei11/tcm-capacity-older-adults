@@ -293,7 +293,7 @@ fig1b <- ggplot(supply_plot, aes(beds, physicians, group = province)) +
 
 fig1 <- fig1a + fig1b +
   plot_layout(widths = c(1.45, 1), guides = "keep") +
-  plot_annotation(tag_levels = "a")
+  plot_annotation(tag_levels = "A")
 
 save_pub(fig1, "fig1_two_longitudinal_systems", height_mm = 112)
 
@@ -305,7 +305,7 @@ analysis <- panel_raw %>%
     wave_fe = factor(year),
     education_group = factor(education_group),
     household_income_quartile = factor(household_income_quartile),
-    z_beds = as.numeric(scale(value_per_10000_population_tcm_hospital_beds)),
+    z_beds = z_py_tcm_beds_per_10000,
     outcome = as.numeric(primary_condition_tcm_any)
   )
 
@@ -395,7 +395,7 @@ fig2a <- ggplot() +
   labs(
     title = "Adjusted within-design association",
     subtitle = "Equal-count bins of model partial residuals; intervals clustered by province",
-    x = "Residualized TCM bed density (SD units)",
+    x = "Adjusted TCM bed-density residual (province-year SD units)",
     y = "Adjusted difference in treatment use (percentage points)"
   ) +
   theme_paper(6.6)
@@ -450,7 +450,7 @@ fig2b <- ggplot(loo, aes(effect)) +
 
 fig2 <- fig2a + fig2b +
   plot_layout(widths = c(1.75, 1)) +
-  plot_annotation(tag_levels = "a")
+  plot_annotation(tag_levels = "A")
 
 save_pub(fig2, "fig2_supply_to_realized_use", height_mm = 96)
 
@@ -538,7 +538,7 @@ fig3 <- p_multi + p_rural + p_education + p_income + p_adl +
   plot_annotation(
     title = "Interaction contrasts across prespecified groups",
     subtitle = "Lines show the additional difference relative to each reference group; shaded fans are 95% confidence intervals",
-    tag_levels = "a",
+    tag_levels = "A",
     theme = theme(
       plot.title = element_text(family = "Arial", size = 8, face = "bold", colour = pal[["ink"]]),
       plot.subtitle = element_text(family = "Arial", size = 6.2, colour = pal[["muted"]], margin = margin(b = 3))
@@ -626,7 +626,7 @@ figs1b <- ggplot(spec_matrix, aes(spec, feature, fill = active)) +
     plot.margin = margin(0, 5, 4, 5)
   )
 
-figs1 <- figs1a / figs1b + plot_layout(heights = c(1.15, 1.35)) + plot_annotation(tag_levels = "a")
+figs1 <- figs1a / figs1b + plot_layout(heights = c(1.15, 1.35)) + plot_annotation(tag_levels = "A")
 save_pub(figs1, "figs1_model_multiverse", height_mm = 150)
 
 # Supplementary Figure 2: outcome availability, event count, and event rate.

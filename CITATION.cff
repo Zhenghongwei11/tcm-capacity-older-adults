@@ -9,7 +9,6 @@ authors:
     given-names: Wanping
     email: 2018029@qzmc.edu.cn
 repository-code: "https://github.com/Zhenghongwei11/tcm-capacity-older-adults"
-doi: 10.5281/zenodo.21624404
-version: "v1.0.1"
-date-released: "2026-07-27"
+version: "v1.0.2"
+date-released: "2026-08-08"
 license: MIT

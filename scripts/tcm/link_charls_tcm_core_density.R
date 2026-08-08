@@ -26,9 +26,9 @@ required_outcome_cols <- c("ID", "communityID", "province", "year")
 required_supply_cols <- c(
   "province", "year",
   "value_tcm_hospital_beds",
-  "value_tcm_physicians",
+  "value_tcm_practicing_assistant_physicians",
   "value_per_10000_population_tcm_hospital_beds",
-  "value_per_10000_population_tcm_physicians",
+  "value_per_10000_population_tcm_practicing_assistant_physicians",
   "denominator_population", "quality_flag", "resource_definition"
 )
 
@@ -69,7 +69,7 @@ linked <- outcomes_for_join %>%
   left_join(supply_for_join, by = c("province_supply_key", "year")) %>%
   mutate(
     core_density_link_status = case_when(
-      !is.na(value_per_10000_population_tcm_physicians) ~ "linked_core_density_ready",
+      !is.na(value_per_10000_population_tcm_practicing_assistant_physicians) ~ "linked_core_density_ready",
       TRUE ~ "missing_core_density_supply"
     ),
     main_core_density_linked_panel = year %in% c(2011L, 2013L, 2015L, 2018L) &

@@ -17,5 +17,6 @@ dependencies:
   - r-patchwork
   - r-scales
   - r-fixest
+  - r-clubsandwich
   - r-purrr
   - r-rvest

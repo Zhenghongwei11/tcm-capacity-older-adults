@@ -33,11 +33,15 @@ covariates_tsv <- argval(
 )
 analysis_tsv <- argval(
   "--analysis-output",
-  "local CHARLS analytic table"
+  "results/tcm/person_wave_tcm_core_density_analysis.tsv"
 )
 qc_tsv <- argval(
   "--qc-output",
   "results/tcm/charls_covariate_missingness.tsv"
+)
+standardization_tsv <- argval(
+  "--standardization-output",
+  "results/tcm/province_year_standardization_constants.tsv"
 )
 
 if (!file.exists(input_dta)) stop(sprintf("Missing Harmonized CHARLS file: %s", input_dta))
@@ -74,6 +78,10 @@ chronic_suffixes <- c(
   "hibpe", "diabe", "cancre", "lunge", "hearte", "stroke",
   "arthre", "dyslipe", "livere", "kidneye", "digeste", "memrye"
 )
+chronic_names <- c(
+  "hypertension", "diabetes", "cancer", "chronic_lung", "heart", "stroke",
+  "arthritis", "dyslipidemia", "liver", "kidney", "digestive", "memory"
+)
 
 covariates <- bind_rows(lapply(1:4, function(wave) {
   year <- c(2011L, 2013L, 2015L, 2018L)[[wave]]
@@ -81,6 +89,8 @@ covariates <- bind_rows(lapply(1:4, function(wave) {
   chronic_vars <- paste0("r", wave, chronic_suffixes)
   chronic_mat <- sapply(chronic_vars, function(v) yes01(value(h, v)))
   if (is.null(dim(chronic_mat))) chronic_mat <- matrix(chronic_mat, ncol = length(chronic_vars))
+  chronic_dx <- as_tibble(chronic_mat, .name_repair = "minimal")
+  names(chronic_dx) <- paste0("chronic_dx_", chronic_names)
 
   age <- value(h, paste0("r", wave, "agey"))
   gender <- value(h, "ragender")
@@ -104,7 +114,7 @@ covariates <- bind_rows(lapply(1:4, function(wave) {
   chronic_observed <- rowSums(!is.na(chronic_mat))
   chronic_count <- ifelse(chronic_observed == 0, NA_real_, chronic_count)
 
-  tibble(
+  bind_cols(tibble(
     harmonized_charls_id = h$ID,
     wave = wave,
     year = year,
@@ -176,7 +186,7 @@ covariates <- bind_rows(lapply(1:4, function(wave) {
     general_outpatient_visit_last_month = yes01(general_outpatient_visit),
     general_hospital_stay_last_year = yes01(general_hospital_stay),
     covariate_source = "Harmonized CHARLS Version D"
-  )
+  ), chronic_dx)
 }))
 
 covariates <- covariates %>%
@@ -229,7 +239,7 @@ context <- read_tsv(context_tsv, show_col_types = FALSE) %>%
     urban_population_percent,
     population_age_65_plus_percent,
     context_z_tcm_hospital_beds = z_value_per_10000_population_tcm_hospital_beds,
-    context_z_tcm_physicians = z_value_per_10000_population_tcm_physicians,
+    context_z_tcm_physicians = z_value_per_10000_population_tcm_practicing_assistant_physicians,
     context_z_comprehensive_hospital_beds = z_value_per_10000_population_comprehensive_hospital_beds,
     context_z_all_hospital_beds = z_value_per_10000_population_hospital_beds,
     context_z_log_gdp_per_capita = z_log_gdp_per_capita_current_yuan,
@@ -247,6 +257,42 @@ analysis <- linked %>%
       age_60plus == 1 &
       !is.na(primary_condition_tcm_any)
   )
+
+py_standardization_vars <- tribble(
+  ~source_variable, ~standardized_variable, ~label,
+  "value_per_10000_population_tcm_hospital_beds", "z_py_tcm_beds_per_10000", "TCM hospital beds per 10,000 population",
+  "value_per_10000_population_tcm_practicing_assistant_physicians", "z_py_tcm_physicians_per_10000", "TCM physicians per 10,000 population",
+  "value_per_10000_population_comprehensive_hospital_beds", "z_py_comprehensive_hospital_beds", "Comprehensive-hospital beds per 10,000 population",
+  "value_per_10000_population_hospital_beds", "z_py_hospital_beds", "Hospital beds per 10,000 population",
+  "log_gdp_per_capita_current_yuan", "z_py_log_gdp", "Log GDP per capita",
+  "urban_population_percent", "z_py_urbanization", "Urban population share",
+  "population_age_65_plus_percent", "z_py_age_65_plus", "Population aged 65 years or older"
+)
+
+standardization_constants <- bind_rows(lapply(seq_len(nrow(py_standardization_vars)), function(i) {
+  source_var <- py_standardization_vars$source_variable[[i]]
+  values <- analysis %>%
+    filter(main_model_age60) %>%
+    distinct(province_supply_key, year, value = .data[[source_var]]) %>%
+    filter(!is.na(value))
+  tibble(
+    source_variable = source_var,
+    standardized_variable = py_standardization_vars$standardized_variable[[i]],
+    label = py_standardization_vars$label[[i]],
+    standardization_population = "unique linked CHARLS province-year units among age-eligible observations with a nonmissing primary TCM outcome",
+    n_province_years = nrow(values),
+    mean = mean(values$value),
+    sd = sd(values$value)
+  )
+}))
+
+for (i in seq_len(nrow(standardization_constants))) {
+  source_var <- standardization_constants$source_variable[[i]]
+  standardized_var <- standardization_constants$standardized_variable[[i]]
+  center <- standardization_constants$mean[[i]]
+  spread <- standardization_constants$sd[[i]]
+  analysis[[standardized_var]] <- (analysis[[source_var]] - center) / spread
+}
 
 qc_vars <- c(
   "age_model", "female", "education_group", "married_or_partnered",
@@ -273,9 +319,11 @@ qc <- bind_rows(lapply(qc_vars, function(v) {
 write_tsv(covariates, covariates_tsv)
 write_tsv(analysis, analysis_tsv)
 write_tsv(qc, qc_tsv)
+write_tsv(standardization_constants, standardization_tsv)
 
 cat(sprintf("Wrote %s\n", covariates_tsv))
 cat(sprintf("Wrote %s\n", analysis_tsv))
 cat(sprintf("Wrote %s\n", qc_tsv))
+cat(sprintf("Wrote %s\n", standardization_tsv))
 print(analysis %>% count(year, main_model_age60, name = "n_person_waves"))
 print(qc %>% filter(variable %in% c("female", "education_group", "chronic_count", "log_household_income")))

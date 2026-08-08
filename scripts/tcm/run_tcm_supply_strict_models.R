@@ -16,7 +16,7 @@ argval <- function(flag, default = NULL) {
 
 analysis_tsv <- argval(
   "--analysis",
-  "local CHARLS analytic table"
+  "results/tcm/person_wave_tcm_core_density_analysis.tsv"
 )
 out_tsv <- argval(
   "--output",
@@ -34,8 +34,8 @@ prepare_data <- function(path) {
       wave_fe = factor(year),
       education_group = factor(education_group),
       household_income_quartile = factor(household_income_quartile),
-      z_tcm_physicians_per_10000 = as.numeric(scale(value_per_10000_population_tcm_physicians)),
-      z_tcm_beds_per_10000 = as.numeric(scale(value_per_10000_population_tcm_hospital_beds))
+      z_tcm_physicians_per_10000 = z_py_tcm_physicians_per_10000,
+      z_tcm_beds_per_10000 = z_py_tcm_beds_per_10000
     )
 }
 

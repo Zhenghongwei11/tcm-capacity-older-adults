@@ -29,9 +29,9 @@ tcm <- read_tsv(tcm_path, show_col_types = FALSE) %>%
   select(
     province, year, denominator_population,
     value_tcm_hospital_beds,
-    value_tcm_physicians,
+    value_tcm_practicing_assistant_physicians,
     value_per_10000_population_tcm_hospital_beds,
-    value_per_10000_population_tcm_physicians,
+    value_per_10000_population_tcm_practicing_assistant_physicians,
     tcm_source_id = source, tcm_source_url = source_url,
     tcm_table_id = table_id
   )
@@ -67,7 +67,7 @@ if (!all(panel$denominator_match)) stop("Health-system and TCM density denominat
 
 numeric_covariates <- c(
   "value_per_10000_population_tcm_hospital_beds",
-  "value_per_10000_population_tcm_physicians",
+  "value_per_10000_population_tcm_practicing_assistant_physicians",
   "value_per_10000_population_comprehensive_hospital_beds",
   "value_per_10000_population_hospital_beds",
   "log_gdp_per_capita_current_yuan",
