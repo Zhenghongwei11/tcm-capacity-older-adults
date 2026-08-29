@@ -112,9 +112,9 @@ fit_one <- function(data, outcome_var, supply_var, model_id, check_type, covaria
       TRUE ~ outcome_var
     ),
     supply_indicator = case_when(
-      supply_var == "z_tcm_physicians_per_10000" ~ "TCM physicians per 10,000 population",
+      supply_var == "z_tcm_physicians_per_10000" ~ "TCM practicing/assistant physicians per 10,000 population",
       supply_var == "z_tcm_beds_per_10000" ~ "TCM hospital beds per 10,000 population",
-      supply_var == "z_lag_tcm_physicians_per_10000" ~ "Lagged TCM physicians per 10,000 population",
+      supply_var == "z_lag_tcm_physicians_per_10000" ~ "Lagged TCM practicing/assistant physicians per 10,000 population",
       supply_var == "z_lag_tcm_beds_per_10000" ~ "Lagged TCM hospital beds per 10,000 population",
       TRUE ~ supply_var
     ),
@@ -145,7 +145,7 @@ no_income_covariates <- setdiff(full_covariates, "household_income_quartile")
 
 analysis <- analysis %>%
   mutate(
-    age60_filter = main_core_density_linked_panel & age_60plus == 1,
+    age60_filter = main_model_age60,
     age45_filter = main_core_density_linked_panel & age_model >= 45
   )
 

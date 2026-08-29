@@ -134,7 +134,7 @@ fit_one <- function(data, supply_var, model_id, covariates, run_wild = FALSE) {
   result <- tibble(
     outcome = "Any disease/condition-specific Chinese medicine treatment use",
     supply_indicator = case_when(
-      supply_var == "z_tcm_physicians_per_10000" ~ "TCM physicians per 10,000 population",
+      supply_var == "z_tcm_physicians_per_10000" ~ "TCM practicing/assistant physicians per 10,000 population",
       supply_var == "z_tcm_beds_per_10000" ~ "TCM hospital beds per 10,000 population",
       TRUE ~ supply_var
     ),

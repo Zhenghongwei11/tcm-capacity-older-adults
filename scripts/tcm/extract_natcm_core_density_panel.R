@@ -118,7 +118,7 @@ extract_one <- function(year, table_id, path, url, expected_beds, expected_physi
       ),
       extraction_status = "official_excel_numeric_extracted",
       quality_flag = "official_natcm_excel_parsed",
-      resource_definition = "TCM hospital beds and TCM physicians per population.",
+      resource_definition = "TCM hospital beds and TCM practicing/assistant physicians per population.",
       denominator_population = population_10k * 10000,
       denominator_unit = "persons",
       denominator_source_id = paste0("natcm_", year, "_extract_", tolower(table_id)),

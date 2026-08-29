@@ -64,7 +64,7 @@ full_covariates <- c(
 
 flow <- bind_rows(
   tibble(stage = "linked province-year TCM panel", n_person_waves = sum(d$main_core_density_linked_panel), n_persons = n_distinct(d$person_id[d$main_core_density_linked_panel])),
-  tibble(stage = "age 60 years or older", n_person_waves = sum(d$main_core_density_linked_panel & d$age_60plus == 1, na.rm = TRUE), n_persons = n_distinct(d$person_id[d$main_core_density_linked_panel & d$age_60plus == 1])),
+  tibble(stage = "age 60 years or older using harmonized age", n_person_waves = sum(d$main_core_density_linked_panel & !is.na(d$age_model) & d$age_model >= 60, na.rm = TRUE), n_persons = n_distinct(d$person_id[d$main_core_density_linked_panel & !is.na(d$age_model) & d$age_model >= 60])),
   tibble(stage = "non-missing primary outcome", n_person_waves = nrow(eligible), n_persons = n_distinct(eligible$person_id)),
   tibble(
     stage = "complete primary-model covariates",

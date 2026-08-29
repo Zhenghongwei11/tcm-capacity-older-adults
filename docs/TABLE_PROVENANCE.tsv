@@ -1,2 +1,2 @@
 table	public_table_file	primary_source_tables	rebuild_script
-Tables 1-2 and eTables 1-11	tables/tables.md	results/tcm/*.tsv	scripts/tcm/build_reported_tables.R writes tables/generated_tables_from_results.md for reproducibility checks
+Tables 1-2 and Supplementary Tables 1-10	tables/tables.md	results/tcm/*.tsv	scripts/tcm/build_reported_tables.R

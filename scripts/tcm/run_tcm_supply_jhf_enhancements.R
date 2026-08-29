@@ -120,7 +120,7 @@ fit_terms <- function(model_id, model_label, outcome_var, exposures, contextual_
       exposure = recode(
         term,
         z_tcm_beds = "TCM hospital beds per 10,000 population",
-        z_tcm_physicians = "TCM physicians per 10,000 population",
+        z_tcm_physicians = "TCM practicing or assistant physicians per 10,000 population",
         z_comprehensive_beds = "Comprehensive-hospital beds per 10,000 population"
       ),
       effect_type = "percentage-point difference per 1-SD higher province-year measure",
@@ -144,19 +144,19 @@ fit_terms <- function(model_id, model_label, outcome_var, exposures, contextual_
 
 small_cluster <- bind_rows(
   fit_terms(
-    "S1_primary",
+    "JHF1_primary",
     "Primary individual-covariate model",
     "outcome_primary",
     "z_tcm_beds"
   ),
   fit_terms(
-    "S2_tcm_and_comprehensive_beds",
+    "JHF2_tcm_and_comprehensive_beds",
     "Primary model with comprehensive-hospital bed density",
     "outcome_primary",
     c("z_tcm_beds", "z_comprehensive_beds")
   ),
   fit_terms(
-    "S3_tcm_beds_physicians_and_context",
+    "JHF3_tcm_beds_physicians_and_context",
     "Joint TCM resource model with health-system and socioeconomic context",
     "outcome_primary",
     c("z_tcm_beds", "z_tcm_physicians", "z_comprehensive_beds"),
@@ -171,14 +171,14 @@ wild_lookup <- bind_rows(
   main %>%
     filter(model == "M2_covariate_adjusted_lpm", str_detect(supply_indicator, "beds")) %>%
     transmute(
-      model = "S1_primary",
+      model = "JHF1_primary",
       exposure = "TCM hospital beds per 10,000 population",
       wild_cluster_pvalue
     ),
   contextual %>%
     filter(model == "C1", term == "z_tcm_beds") %>%
     transmute(
-      model = "S2_tcm_and_comprehensive_beds",
+      model = "JHF2_tcm_and_comprehensive_beds",
       exposure = "TCM hospital beds per 10,000 population",
       wild_cluster_pvalue
     )
@@ -200,7 +200,7 @@ bed_physician <- read_tsv(bed_physician_tsv, show_col_types = FALSE)
 base_primary <- main %>%
   filter(model == "M2_covariate_adjusted_lpm") %>%
   transmute(
-    analysis_domain = "Primary outcome",
+    evidence_domain = "Primary outcome",
     outcome = "Disease-specific TCM treatment use",
     exposure = supply_indicator,
     model = "Individual covariates, province fixed effects, and survey-year fixed effects",
@@ -209,7 +209,7 @@ base_primary <- main %>%
     ci_upper,
     pvalue,
     small_cluster_pvalue = wild_cluster_pvalue,
-    interpretation_note = if_else(
+    reading = if_else(
       str_detect(supply_indicator, "beds"),
       "Institutional TCM capacity was positively associated with realized TCM treatment use, but small-cluster inference was less precise.",
       "Physician headcount did not show a parallel positive association."
@@ -219,7 +219,7 @@ base_primary <- main %>%
 strict_tcm <- strict %>%
   filter(model == "S2_covariate_adjusted_lpm", str_detect(supply_indicator, "beds|physicians")) %>%
   transmute(
-    analysis_domain = "Strict TCM institution use",
+    evidence_domain = "Strict TCM institution use",
     outcome = "TCM hospital visit in the past month",
     exposure = supply_indicator,
     model = "Individual covariates, province fixed effects, and survey-year fixed effects",
@@ -228,13 +228,13 @@ strict_tcm <- strict %>%
     ci_upper,
     pvalue,
     small_cluster_pvalue = NA_real_,
-    interpretation_note = "The strict institution-use endpoint was rare and showed smaller, imprecise associations."
+    reading = "The strict institution-use endpoint was rare and showed smaller, imprecise associations."
   )
 
 context_primary <- contextual %>%
   filter(model == "C1") %>%
   transmute(
-    analysis_domain = "Health-system context",
+    evidence_domain = "Health-system context",
     outcome = "Disease-specific TCM treatment use",
     exposure = term_label,
     model = "TCM and comprehensive-hospital bed densities entered jointly",
@@ -243,7 +243,7 @@ context_primary <- contextual %>%
     ci_upper,
     pvalue = cluster_pvalue,
     small_cluster_pvalue = wild_cluster_pvalue,
-    interpretation_note = if_else(
+    reading = if_else(
       term == "z_tcm_beds",
       "The TCM bed association was not explained by comprehensive-hospital bed density in the same model.",
       "Comprehensive-hospital bed density did not show a positive association with TCM treatment use."
@@ -253,7 +253,7 @@ context_primary <- contextual %>%
 general_use <- falsification %>%
   filter(model %in% c("F2_general_outpatient", "F3_general_inpatient"), term %in% c("z_tcm_beds", "z_comprehensive_beds")) %>%
   transmute(
-    analysis_domain = "Broader health-care use",
+    evidence_domain = "Broader health-care use",
     outcome = outcome,
     exposure = term_label,
     model = "General utilization model with health-system and socioeconomic context",
@@ -262,13 +262,13 @@ general_use <- falsification %>%
     ci_upper,
     pvalue = cluster_pvalue,
     small_cluster_pvalue = NA_real_,
-    interpretation_note = "Broader utilization outcomes help judge whether TCM capacity is also marking wider care-seeking or service expansion."
+    reading = "Broader utilization outcomes help judge whether TCM capacity is also marking wider care-seeking or service expansion."
   )
 
 joint_resources <- bed_physician %>%
   filter(model == "J2", term %in% c("z_tcm_beds", "z_tcm_physicians", "z_comprehensive_beds")) %>%
   transmute(
-    analysis_domain = "Joint resource model",
+    evidence_domain = "Joint resource model",
     outcome = "Disease-specific TCM treatment use",
     exposure = term_label,
     model = "TCM bed, TCM physician, comprehensive-hospital bed, GDP, and urbanization entered jointly",
@@ -277,7 +277,7 @@ joint_resources <- bed_physician %>%
     ci_upper,
     pvalue = cluster_pvalue,
     small_cluster_pvalue = NA_real_,
-    interpretation_note = case_when(
+    reading = case_when(
       term == "z_tcm_beds" ~ "Bed density retained the positive association in the joint resource model.",
       term == "z_tcm_physicians" ~ "Physician density did not translate into higher realized use in the same period.",
       TRUE ~ "Comprehensive-hospital bed density did not account for the TCM bed association."
@@ -291,8 +291,8 @@ specificity <- bind_rows(base_primary, strict_tcm, context_primary, general_use,
     across(c(estimate, ci_lower, ci_upper, pvalue, small_cluster_pvalue), ~ round(.x, 5))
   ) %>%
   select(
-    analysis_domain, outcome, exposure, model, effect_type, estimate, ci_lower,
-    ci_upper, pvalue, small_cluster_pvalue, n_clusters, interpretation_note
+    evidence_domain, outcome, exposure, model, effect_type, estimate, ci_lower,
+    ci_upper, pvalue, small_cluster_pvalue, n_clusters, reading
   )
 
 write_tsv(specificity, specificity_out)

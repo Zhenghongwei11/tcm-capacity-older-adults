@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 
 suppressPackageStartupMessages({
+  library(clubSandwich)
   library(dplyr)
   library(readr)
   library(tibble)
@@ -80,7 +81,7 @@ supply_panel <- read_tsv(context_tsv, show_col_types = FALSE) %>%
   ungroup()
 
 analysis <- read_tsv(analysis_tsv, show_col_types = FALSE) %>%
-  filter(main_core_density_linked_panel, age_60plus == 1) %>%
+  filter(main_model_age60) %>%
   left_join(
     supply_panel %>% select(province_supply_key, year, lag_tcm_beds, lag_tcm_physicians),
     by = c("province_supply_key", "year")
@@ -129,9 +130,9 @@ model_labels <- c(
 
 term_labels <- c(
   z_tcm_beds = "Concurrent TCM hospital beds per 10,000 population",
-  z_tcm_physicians = "Concurrent TCM physicians per 10,000 population",
+  z_tcm_physicians = "Concurrent TCM practicing/assistant physicians per 10,000 population",
   z_lag_tcm_beds = "Lagged TCM hospital beds per 10,000 population",
-  z_lag_tcm_physicians = "Lagged TCM physicians per 10,000 population",
+  z_lag_tcm_physicians = "Lagged TCM practicing/assistant physicians per 10,000 population",
   z_comprehensive_beds = "Comprehensive-hospital beds per 10,000 population",
   z_log_gdp = "Log provincial GDP per capita",
   z_urbanization = "Urban population share"
@@ -145,12 +146,24 @@ fit_spec <- function(model_id, terms) {
   fit <- lm(formula, data = d)
   vcov <- cluster_vcov(fit, d$province_supply_key)
   df <- n_distinct(d$province_supply_key) - 1
+  cr2 <- tryCatch(
+    coef_test(fit, vcov = "CR2", cluster = d$province_supply_key, test = "Satterthwaite"),
+    error = function(e) NULL
+  )
 
   bind_rows(lapply(terms, function(term) {
     effect <- unname(coef(fit)[[term]])
     se <- sqrt(vcov[term, term])
     ci <- effect + c(-1, 1) * qt(0.975, df = df) * se
     pvalue <- 2 * pt(abs(effect / se), df = df, lower.tail = FALSE)
+    cr2_pvalue <- cr2_df <- NA_real_
+    cr2_ci <- c(NA_real_, NA_real_)
+    if (!is.null(cr2) && term %in% rownames(cr2)) {
+      cr2_se <- as.numeric(cr2[term, "SE"])
+      cr2_df <- as.numeric(cr2[term, "df_Satt"])
+      cr2_pvalue <- as.numeric(cr2[term, "p_Satt"])
+      cr2_ci <- effect + c(-1, 1) * qt(0.975, df = cr2_df) * cr2_se
+    }
     tibble(
       model = model_id,
       model_label = unname(model_labels[[model_id]]),
@@ -161,6 +174,10 @@ fit_spec <- function(model_id, terms) {
       ci_lower = 100 * ci[[1]],
       ci_upper = 100 * ci[[2]],
       cluster_pvalue = pvalue,
+      cr2_ci_lower = 100 * cr2_ci[[1]],
+      cr2_ci_upper = 100 * cr2_ci[[2]],
+      cr2_pvalue = cr2_pvalue,
+      cr2_df = cr2_df,
       n_persons = n_distinct(d$person_id),
       n_person_waves = nrow(d),
       n_clusters = n_distinct(d$province_supply_key),
@@ -171,7 +188,8 @@ fit_spec <- function(model_id, terms) {
 }
 
 results <- bind_rows(Map(fit_spec, names(model_specs), model_specs)) %>%
-  mutate(across(c(effect, ci_lower, ci_upper, cluster_pvalue), ~ round(.x, 5)))
+  mutate(across(c(effect, ci_lower, ci_upper, cluster_pvalue, cr2_ci_lower,
+                  cr2_ci_upper, cr2_pvalue, cr2_df), ~ round(.x, 5)))
 
 panel <- analysis %>%
   distinct(

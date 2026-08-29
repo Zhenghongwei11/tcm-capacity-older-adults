@@ -1,6 +1,6 @@
 panel_title	reference_text	interaction_effect	ci_lower	ci_upper	pvalue	n_persons	n_person_waves	n_clusters
-Rural residence	versus urban residence	0.52622	-0.45761	1.51005	0.28213	13138	32914	28
-Lower education	versus higher education	0.36372	-1.58147	2.3089	0.70424	13138	32914	28
-Lower income	versus higher income	0.38888	-0.81901	1.59676	0.51448	13138	32914	28
-Multimorbidity	versus no multimorbidity	2.986	1.2569	4.71511	0.00146	13138	32914	28
-ADL limitation	versus no ADL limitation	0.27387	-1.39379	1.94153	0.73875	13138	32914	28
+Rural residence	versus urban residence	0.47205	-0.54873	1.49283	0.35111	13083	32634	28
+Lower education	versus higher education	0.35604	-1.67096	2.38305	0.72135	13083	32634	28
+Lower income	versus higher income	0.30611	-0.94568	1.55791	0.61991	13083	32634	28
+Multimorbidity	versus no multimorbidity	2.95658	1.22689	4.68627	0.0016	13083	32634	28
+ADL limitation	versus no ADL limitation	0.24554	-1.38357	1.87465	0.7595	13083	32634	28

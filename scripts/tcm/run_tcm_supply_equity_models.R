@@ -158,7 +158,7 @@ fit_stratum <- function(data, stratum_var, stratum_level, supply_var) {
     stratum = stratum_var,
     stratum_level = stratum_level,
     supply_indicator = case_when(
-      supply_var == "z_tcm_physicians_per_10000" ~ "TCM physicians per 10,000 population",
+      supply_var == "z_tcm_physicians_per_10000" ~ "TCM practicing/assistant physicians per 10,000 population",
       supply_var == "z_tcm_beds_per_10000" ~ "TCM hospital beds per 10,000 population",
       TRUE ~ supply_var
     ),

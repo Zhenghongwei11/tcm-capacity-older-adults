@@ -1,7 +1,7 @@
 year	outcome	respondents	events	event_rate	available	rate_label
-2011	Broader TCM-related use	7605	621	8.165680473372781	TRUE	8.2%
-2011	Primary treatment outcome	7626	1452	19.040125885129818	TRUE	19.0%
-2011	Strict TCM hospital visit	7605	94	1.2360289283366206	TRUE	1.2%
+2011	Broader TCM-related use	7319	605	8.26615657876759	TRUE	8.3%
+2011	Primary treatment outcome	7340	1402	19.100817438692097	TRUE	19.1%
+2011	Strict TCM hospital visit	7319	90	1.229676185271212	TRUE	1.2%
 2013	Broader TCM-related use	8451	1085	12.838717311560762	TRUE	12.8%
 2013	Primary treatment outcome	8481	1576	18.58271430255866	TRUE	18.6%
 2013	Strict TCM hospital visit	8451	129	1.526446574369897	TRUE	1.5%

@@ -47,9 +47,9 @@
 <rect x='412.07' y='136.39' width='82.56' height='36.23' style='stroke-width: 0.68; stroke: #E4E8E8; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFFFF;' />
 <rect x='412.07' y='35.76' width='82.56' height='36.23' style='stroke-width: 0.68; stroke: #E4E8E8; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFFFF;' />
 <rect x='412.07' y='86.07' width='82.56' height='36.23' style='stroke-width: 0.68; stroke: #E4E8E8; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFFFF;' />
-<circle cx='151.31' cy='154.50' r='9.55' style='stroke-width: 0.60; stroke: #FFFFFF; fill: #DCBAAC;' />
-<circle cx='151.31' cy='53.87' r='14.44' style='stroke-width: 0.60; stroke: #FFFFFF; fill: #D38361;' />
-<circle cx='151.31' cy='104.19' r='3.90' style='stroke-width: 0.60; stroke: #FFFFFF; fill: #DADDDE;' />
+<circle cx='151.31' cy='154.50' r='9.43' style='stroke-width: 0.60; stroke: #FFFFFF; fill: #DCB9AB;' />
+<circle cx='151.31' cy='53.87' r='14.20' style='stroke-width: 0.60; stroke: #FFFFFF; fill: #D38361;' />
+<circle cx='151.31' cy='104.19' r='3.82' style='stroke-width: 0.60; stroke: #FFFFFF; fill: #DADDDE;' />
 <circle cx='251.99' cy='154.50' r='12.53' style='stroke-width: 0.60; stroke: #FFFFFF; fill: #DAA28B;' />
 <circle cx='251.99' cy='53.87' r='15.04' style='stroke-width: 0.60; stroke: #FFFFFF; fill: #D38664;' />
 <circle cx='251.99' cy='104.19' r='4.51' style='stroke-width: 0.60; stroke: #FFFFFF; fill: #DADBDC;' />
@@ -58,8 +58,8 @@
 <circle cx='352.67' cy='104.19' r='4.80' style='stroke-width: 0.60; stroke: #FFFFFF; fill: #DADBDC;' />
 <circle cx='453.35' cy='53.87' r='19.50' style='stroke-width: 0.60; stroke: #FFFFFF; fill: #C9663B;' />
 <circle cx='453.35' cy='104.19' r='4.50' style='stroke-width: 0.60; stroke: #FFFFFF; fill: #DADDDE;' />
-<text x='151.31' y='156.69' text-anchor='middle' style='font-size: 6.12px;fill: #24282B; font-family: "Arial";' textLength='13.92px' lengthAdjust='spacingAndGlyphs'>8.2%</text>
-<text x='151.31' y='56.06' text-anchor='middle' style='font-size: 6.12px;fill: #24282B; font-family: "Arial";' textLength='17.31px' lengthAdjust='spacingAndGlyphs'>19.0%</text>
+<text x='151.31' y='156.69' text-anchor='middle' style='font-size: 6.12px;fill: #24282B; font-family: "Arial";' textLength='13.92px' lengthAdjust='spacingAndGlyphs'>8.3%</text>
+<text x='151.31' y='56.06' text-anchor='middle' style='font-size: 6.12px;fill: #24282B; font-family: "Arial";' textLength='17.31px' lengthAdjust='spacingAndGlyphs'>19.1%</text>
 <text x='151.31' y='106.38' text-anchor='middle' style='font-size: 6.12px;fill: #24282B; font-family: "Arial";' textLength='13.92px' lengthAdjust='spacingAndGlyphs'>1.2%</text>
 <text x='251.99' y='156.69' text-anchor='middle' style='font-size: 6.12px;fill: #24282B; font-family: "Arial";' textLength='17.31px' lengthAdjust='spacingAndGlyphs'>12.8%</text>
 <text x='251.99' y='56.06' text-anchor='middle' style='font-size: 6.12px;fill: #24282B; font-family: "Arial";' textLength='17.31px' lengthAdjust='spacingAndGlyphs'>18.6%</text>

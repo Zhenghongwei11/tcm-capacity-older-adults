@@ -140,6 +140,8 @@ main_models <- read_tsv("results/tcm/tcm_supply_main_models.tsv", show_col_types
 robustness <- read_tsv("results/tcm/tcm_supply_robustness.tsv", show_col_types = FALSE)
 cluster_checks <- read_tsv("results/tcm/tcm_supply_cluster_sensitivity.tsv", show_col_types = FALSE)
 interactions <- read_tsv("results/tcm/tcm_supply_equity_interactions.tsv", show_col_types = FALSE)
+opportunity_checks <- read_tsv("results/tcm/tcm_supply_multimorbidity_opportunity_checks.tsv", show_col_types = FALSE)
+joint_resources <- read_tsv("results/tcm/tcm_supply_bed_physician_models.tsv", show_col_types = FALSE)
 weighted_models <- read_tsv("results/tcm/tcm_supply_weighted_attrition_models.tsv", show_col_types = FALSE)
 identification_models <- read_tsv("results/tcm/tcm_supply_longitudinal_identification_models.tsv", show_col_types = FALSE)
 
@@ -195,7 +197,7 @@ fig1a <- ggplot(
   aes(x = year, stratum = state, alluvium = sequence, y = n, fill = trajectory)
 ) +
   geom_alluvium(width = 0.18, alpha = 0.82, colour = NA, knot.pos = 0.42) +
-  geom_stratum(aes(fill = state), width = 0.18, colour = "white", linewidth = 0.3) +
+  geom_stratum(fill = pal[["neutral_light"]], width = 0.18, colour = "white", linewidth = 0.3) +
   stat_stratum(aes(label = after_stat(stratum)), geom = "text", size = 2.0, colour = pal[["ink"]], lineheight = 0.9) +
   scale_fill_manual(
     values = trajectory_colors,
@@ -279,7 +281,6 @@ fig1b <- ggplot(supply_plot, aes(beds, physicians, group = province)) +
     segment.colour = pal[["neutral"]], segment.size = 0.25,
     box.padding = 0.25, point.padding = 0.12, max.overlaps = Inf, seed = 20260720
   ) +
-  annotate("text", x = mean_path$beds[1] - 0.12, y = mean_path$physicians[1] + 0.18, label = "2011", hjust = 1, size = 1.9, colour = pal[["supply_dark"]]) +
   annotate("text", x = mean_path$beds[4] + 0.12, y = mean_path$physicians[4] - 0.20, label = "2018 mean", hjust = 0, size = 1.9, colour = pal[["supply_dark"]]) +
   scale_x_continuous(expand = expansion(mult = c(0.05, 0.14))) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.12))) +
@@ -433,9 +434,9 @@ fig2b <- ggplot(loo, aes(effect)) +
     inherit.aes = FALSE, size = 1.9, colour = pal[["muted"]]
   ) +
   annotate("text", x = main_cluster$effect, y = 0.88, label = "Full sample", size = 1.9, colour = pal[["use_dark"]]) +
-  scale_x_continuous(breaks = c(0.5, 1.5, 2.5, 3.5)) +
+  scale_x_continuous(breaks = 0:4) +
   scale_y_continuous(breaks = NULL) +
-  coord_cartesian(xlim = c(0.05, 3.75), ylim = c(-0.42, 1.02), clip = "off") +
+  coord_cartesian(xlim = c(0, 4.25), ylim = c(-0.42, 1.02), clip = "off") +
   labs(
     title = "Province influence",
     subtitle = "28 leave-one-province-out estimates",
@@ -454,98 +455,96 @@ fig2 <- fig2a + fig2b +
 
 save_pub(fig2, "fig2_supply_to_realized_use", height_mm = 96)
 
-# Figure 3: formal interaction contrasts shown as response-path differences.
-contrast_lookup <- tribble(
-  ~stratum, ~contrast, ~panel_title, ~reference_text,
-  "multichronic_stratum", "multichronic_stratummultimorbidity", "Multimorbidity", "versus no multimorbidity",
-  "rural_stratum", "rural_stratumrural", "Rural residence", "versus urban residence",
-  "education_stratum", "education_stratumlower_education", "Lower education", "versus higher education",
-  "income_stratum", "income_stratumlower_income", "Lower income", "versus higher income",
-  "adl_stratum", "adl_stratumadl_limitation", "ADL limitation", "versus no ADL limitation"
-)
-
-contrast_data <- interactions %>%
-  inner_join(contrast_lookup, by = c("stratum", "contrast")) %>%
+# Figure 3: joint resource signals and the robustness of need-related heterogeneity.
+resource_plot_data <- joint_resources %>%
+  filter(model == "J2", term %in% c("z_tcm_beds", "z_tcm_physicians", "z_comprehensive_beds")) %>%
   mutate(
-    panel_title = factor(panel_title, levels = contrast_lookup$panel_title),
-    p_label = if_else(pvalue < 0.001, "P interaction < 0.001", sprintf("P interaction = %.3f", pvalue))
+    resource = recode(
+      term,
+      z_tcm_beds = "TCM hospital beds",
+      z_tcm_physicians = "TCM physicians",
+      z_comprehensive_beds = "Comprehensive-hospital beds"
+    ),
+    resource = factor(resource, levels = rev(c(
+      "TCM hospital beds", "TCM physicians", "Comprehensive-hospital beds"
+    )))
   )
 
-contrast_paths <- contrast_data %>%
-  select(panel_title, reference_text, interaction_effect, ci_lower, ci_upper, p_label) %>%
-  crossing(x = seq(-1, 1, length.out = 101)) %>%
-  mutate(
-    fit = interaction_effect * x,
-    edge_1 = ci_lower * x,
-    edge_2 = ci_upper * x,
-    lower = pmin(edge_1, edge_2),
-    upper = pmax(edge_1, edge_2)
+original_multi <- interactions %>%
+  filter(stratum == "multichronic_stratum") %>%
+  transmute(
+    check = "Multimorbidity: original",
+    effect = interaction_effect,
+    lower = ci_lower,
+    upper = ci_upper,
+    inference = "Province-clustered 95% CI"
   )
 
-write_tsv(
-  contrast_data %>% select(panel_title, reference_text, interaction_effect, ci_lower, ci_upper, pvalue, n_persons, n_person_waves, n_clusters),
-  file.path(source_dir, "fig3_formal_interaction_contrasts.tsv")
-)
-
-path_plot <- function(title, hero = FALSE) {
-  d <- contrast_paths %>% filter(panel_title == title)
-  s <- contrast_data %>% filter(panel_title == title)
-  ymax <- 5.4
-  ggplot(d, aes(x, fit)) +
-    geom_ribbon(aes(ymin = lower, ymax = upper), fill = pal[["use_light"]], alpha = if (hero) 0.85 else 0.65) +
-    geom_hline(yintercept = 0, linewidth = 0.36, colour = pal[["reference"]]) +
-    geom_line(linewidth = if (hero) 0.9 else 0.7, colour = pal[["use_dark"]]) +
-    geom_point(data = filter(d, x %in% c(-1, 1)), size = if (hero) 2.0 else 1.6, shape = 21, fill = pal[["use"]], colour = "white", stroke = 0.3) +
-    annotate(
-      "text", x = -0.96, y = ymax - 0.35, label = s$reference_text,
-      hjust = 0, vjust = 1, size = if (hero) 2.2 else 1.75, colour = pal[["muted"]]
-    ) +
-    annotate(
-      "text", x = 0.96, y = -ymax + 0.35,
-      label = sprintf("%+.2f pp per SD\n%s", s$interaction_effect, s$p_label),
-      hjust = 1, vjust = 0, size = if (hero) 2.2 else 1.75,
-      colour = if (s$pvalue < 0.05) pal[["use_dark"]] else pal[["muted"]], lineheight = 0.95
-    ) +
-    scale_x_continuous(breaks = c(-1, 0, 1), labels = c("-1 SD", "Mean", "+1 SD"), expand = expansion(mult = c(0.02, 0.02))) +
-    scale_y_continuous(limits = c(-ymax, ymax), breaks = c(-4, 0, 4)) +
-    labs(
-      title = title,
-      x = if (hero) "TCM hospital bed density" else NULL,
-      y = if (hero) "Additional difference in use\n(percentage points)" else NULL
-    ) +
-    theme_paper(if (hero) 6.8 else 5.9) +
-    theme(
-      axis.text.y = if (hero) element_text() else element_blank(),
-      axis.ticks.y = if (hero) element_line(linewidth = 0.3) else element_blank(),
-      axis.line.y = if (hero) element_line(linewidth = 0.3) else element_blank(),
-      plot.margin = margin(4, 4, 4, 4)
-    )
-}
-
-p_multi <- path_plot("Multimorbidity", hero = TRUE)
-p_rural <- path_plot("Rural residence")
-p_education <- path_plot("Lower education")
-p_income <- path_plot("Lower income")
-p_adl <- path_plot("ADL limitation")
-
-fig3_design <- "
-AAAA
-BCDE
-"
-
-fig3 <- p_multi + p_rural + p_education + p_income + p_adl +
-  plot_layout(design = fig3_design, heights = c(1.25, 1)) +
-  plot_annotation(
-    title = "Interaction contrasts across prespecified groups",
-    subtitle = "Lines show the additional difference relative to each reference group; shaded fans are 95% confidence intervals",
-    tag_levels = "A",
-    theme = theme(
-      plot.title = element_text(family = "Arial", size = 8, face = "bold", colour = pal[["ink"]]),
-      plot.subtitle = element_text(family = "Arial", size = 6.2, colour = pal[["muted"]], margin = margin(b = 3))
-    )
+adjusted_multi <- opportunity_checks %>%
+  filter(analysis_id == "composite_multimorbidity_adjusted_for_count") %>%
+  transmute(
+    check = "Multimorbidity: count-adjusted",
+    effect = interaction_effect,
+    lower = cr2_ci_lower,
+    upper = cr2_ci_upper,
+    inference = "CR2 95% CI"
   )
 
-save_pub(fig3, "fig3_need_and_equity_paths", height_mm = 118)
+continuous_multi <- opportunity_checks %>%
+  filter(analysis_id == "composite_continuous_burden") %>%
+  transmute(
+    check = "Per additional condition",
+    effect = interaction_effect,
+    lower = cr2_ci_lower,
+    upper = cr2_ci_upper,
+    inference = "CR2 95% CI"
+  )
+
+need_plot_data <- bind_rows(original_multi, adjusted_multi, continuous_multi) %>%
+  mutate(check = factor(check, levels = rev(c(
+    "Multimorbidity: original",
+    "Multimorbidity: count-adjusted",
+    "Per additional condition"
+  ))))
+
+write_tsv(resource_plot_data, file.path(source_dir, "fig3_joint_resource_estimates.tsv"))
+write_tsv(need_plot_data, file.path(source_dir, "fig3_multimorbidity_opportunity_checks.tsv"))
+
+fig3a <- ggplot(resource_plot_data, aes(effect, resource)) +
+  geom_vline(xintercept = 0, colour = pal[["grid"]], linewidth = 0.4) +
+  geom_errorbar(aes(xmin = ci_lower, xmax = ci_upper), orientation = "y", width = 0, linewidth = 1.6, colour = pal[["neutral"]]) +
+  geom_errorbar(aes(xmin = cr2_ci_lower, xmax = cr2_ci_upper), orientation = "y", width = 0, linewidth = 0.55, colour = pal[["supply_dark"]]) +
+  geom_point(shape = 21, size = 2.5, fill = pal[["supply"]], colour = "white", stroke = 0.4) +
+  scale_x_continuous(breaks = seq(-6, 12, 3)) +
+  labs(
+    title = "Joint resource model",
+    subtitle = "Thick intervals: conventional; thin intervals: CR2",
+    x = "Percentage-point difference per province-year SD",
+    y = NULL
+  ) +
+  theme_paper(6.7)
+
+fig3b <- ggplot(need_plot_data, aes(effect, check)) +
+  geom_vline(xintercept = 0, colour = pal[["grid"]], linewidth = 0.4) +
+  geom_errorbar(aes(xmin = lower, xmax = upper, colour = inference), orientation = "y", width = 0, linewidth = 0.65) +
+  geom_point(aes(fill = inference), shape = 21, size = 2.5, colour = "white", stroke = 0.4) +
+  scale_colour_manual(values = c("Province-clustered 95% CI" = pal[["use_dark"]], "CR2 95% CI" = pal[["reference"]])) +
+  scale_fill_manual(values = c("Province-clustered 95% CI" = pal[["use"]], "CR2 95% CI" = pal[["reference"]])) +
+  scale_x_continuous(breaks = seq(-1, 5, 1)) +
+  labs(
+    title = "Need-related effect modification",
+    subtitle = "Attenuation after adjustment for condition count",
+    x = "Additional difference (percentage points)",
+    y = NULL
+  ) +
+  theme_paper(6.7) +
+  theme(legend.position = "bottom")
+
+fig3 <- fig3a + fig3b +
+  plot_layout(widths = c(1, 1.15), guides = "keep") +
+  plot_annotation(tag_levels = "A")
+
+save_pub(fig3, "fig3_need_and_equity_paths", height_mm = 105)
 
 # Supplementary Figure 1: estimates plus an explicit specification matrix.
 pick_main <- function(indicator, model_id) {
@@ -555,7 +554,7 @@ pick_main <- function(indicator, model_id) {
 }
 
 bed_name <- "TCM hospital beds per 10,000 population"
-physician_name <- "TCM physicians per 10,000 population"
+physician_name <- "TCM practicing/assistant physicians per 10,000 population"
 
 specs <- bind_rows(
   pick_main(bed_name, "M2_covariate_adjusted_lpm") %>% mutate(spec = "S1", label = "Primary bed-density model", exposure = "Bed density", population = "Age 60+", outcome_group = "Primary outcome", timing = "Concurrent", adjustment = "Full adjustment", uncertainty = "Province clustered"),

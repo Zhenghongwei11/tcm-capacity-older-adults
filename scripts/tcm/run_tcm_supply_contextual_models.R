@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 
 suppressPackageStartupMessages({
+  library(clubSandwich)
   library(dplyr)
   library(readr)
   library(tibble)
@@ -186,12 +187,24 @@ fit_spec <- function(model_id, exposures) {
   fit <- lm(formula, data = d)
   vcov <- cluster_vcov(fit, d$province_supply_key)
   df <- n_distinct(d$province_supply_key) - 1
+  cr2 <- tryCatch(
+    coef_test(fit, vcov = "CR2", cluster = d$province_supply_key, test = "Satterthwaite"),
+    error = function(e) NULL
+  )
 
   estimates <- bind_rows(lapply(exposures, function(term) {
     effect <- unname(coef(fit)[[term]])
     se <- sqrt(vcov[term, term])
     ci <- effect + c(-1, 1) * qt(0.975, df = df) * se
     pvalue <- 2 * pt(abs(effect / se), df = df, lower.tail = FALSE)
+    cr2_pvalue <- cr2_df <- NA_real_
+    cr2_ci <- c(NA_real_, NA_real_)
+    if (!is.null(cr2) && term %in% rownames(cr2)) {
+      cr2_se <- as.numeric(cr2[term, "SE"])
+      cr2_df <- as.numeric(cr2[term, "df_Satt"])
+      cr2_pvalue <- as.numeric(cr2[term, "p_Satt"])
+      cr2_ci <- effect + c(-1, 1) * qt(0.975, df = cr2_df) * cr2_se
+    }
     tibble(
       model = model_id,
       model_label = unname(model_labels[[model_id]]),
@@ -202,6 +215,10 @@ fit_spec <- function(model_id, exposures) {
       ci_lower = 100 * ci[[1]],
       ci_upper = 100 * ci[[2]],
       cluster_pvalue = pvalue,
+      cr2_ci_lower = 100 * cr2_ci[[1]],
+      cr2_ci_upper = 100 * cr2_ci[[2]],
+      cr2_pvalue = cr2_pvalue,
+      cr2_df = cr2_df,
       wild_cluster_pvalue = NA_real_,
       wild_cluster_reps_requested = NA_integer_,
       wild_cluster_reps_valid = NA_integer_,
@@ -212,7 +229,9 @@ fit_spec <- function(model_id, exposures) {
       n_clusters = n_distinct(d$province_supply_key),
       fixed_effects = "province and survey year",
       individual_covariates = paste(individual_covariates, collapse = "; "),
-      contextual_covariates = paste(setdiff(exposures, "z_tcm_beds"), collapse = "; ")
+      contextual_covariates = if (
+        length(setdiff(exposures, "z_tcm_beds")) == 0
+      ) "None" else paste(setdiff(exposures, "z_tcm_beds"), collapse = "; ")
     )
   }))
 
@@ -228,7 +247,8 @@ fit_spec <- function(model_id, exposures) {
 }
 
 results <- bind_rows(Map(fit_spec, names(model_specs), model_specs)) %>%
-  mutate(across(c(effect, ci_lower, ci_upper, cluster_pvalue, wild_cluster_pvalue), ~ round(.x, 5)))
+  mutate(across(c(effect, ci_lower, ci_upper, cluster_pvalue, cr2_ci_lower,
+                  cr2_ci_upper, cr2_pvalue, cr2_df, wild_cluster_pvalue), ~ round(.x, 5)))
 
 panel_for_diagnostics <- analysis %>%
   distinct(

@@ -1,6 +1,6 @@
 stage	n_person_waves	n_persons
 linked province-year TCM panel	76902	25487
-age 60 years or older	36756	13885
-non-missing primary outcome	36697	13871
-complete primary-model covariates	32914	13138
-positive adjusted respondent weight and complete primary-model covariates	32220	12908
+age 60 years or older using harmonized age	36470	13834
+non-missing primary outcome	36411	13821
+complete primary-model covariates	32634	13083
+positive adjusted respondent weight and complete primary-model covariates	31940	12849

@@ -1,0 +1,5 @@
+year	n_linked_person_waves	n_age_model_observed	n_harmonized_age_observed	n_raw_age_observed	n_raw_age_fallback	n_absolute_difference_gt_1_year	n_age60_eligibility_discordant	n_raw_eligible_harmonized_ineligible	n_raw_ineligible_harmonized_eligible	n_final_age60_with_primary_outcome	minimum_age_model	maximum_age_model	age_definition
+2011	17601	17597	17436	17563	161	1399	482	393	89	7340	10	101	Harmonized CHARLS age; raw wave age used only when harmonized age is unavailable
+2013	18511	18440	18396	18440	44	0	0	0	0	8481	12	103	Harmonized CHARLS age; raw wave age used only when harmonized age is unavailable
+2015	20994	20936	20901	20936	35	0	0	0	0	9814	0	115	Harmonized CHARLS age; raw wave age used only when harmonized age is unavailable
+2018	19796	19795	19731	19795	64	0	0	0	0	10776	17	118	Harmonized CHARLS age; raw wave age used only when harmonized age is unavailable

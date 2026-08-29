@@ -1,0 +1,4 @@
+check	effect	lower	upper	inference
+Multimorbidity: original	2.95658	1.22689	4.68627	Province-clustered 95% CI
+Multimorbidity: count-adjusted	1.60705	-0.20469	3.41878	CR2 95% CI
+Per additional condition	0.47844	-0.04274	0.99962	CR2 95% CI

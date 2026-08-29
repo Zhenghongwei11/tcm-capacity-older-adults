@@ -13,9 +13,9 @@ argval <- function(flag, default = NULL) {
   args[[idx + 1]]
 }
 
-outcomes_tsv <- argval("--outcomes", "local CHARLS outcome table")
+outcomes_tsv <- argval("--outcomes", "results/tcm/person_wave_tcm_outcomes.tsv")
 supply_tsv <- argval("--supply", "results/tcm/province_year_tcm_core_density.tsv")
-out_tsv <- argval("--output", "local CHARLS linked table")
+out_tsv <- argval("--output", "results/tcm/person_wave_tcm_core_density_linked.tsv")
 
 dir.create(dirname(out_tsv), recursive = TRUE, showWarnings = FALSE)
 

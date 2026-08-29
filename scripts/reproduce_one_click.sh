@@ -24,14 +24,14 @@ Rscript scripts/tcm/run_tcm_supply_strict_models.R
 Rscript scripts/tcm/run_tcm_supply_broader_models.R
 Rscript scripts/tcm/run_tcm_supply_equity_models.R
 Rscript scripts/tcm/run_tcm_supply_equity_interactions.R
-Rscript scripts/tcm/run_tcm_supply_multimorbidity_phenotypes.R
+Rscript scripts/tcm/run_tcm_supply_multimorbidity_opportunity_checks.R
 Rscript scripts/tcm/run_tcm_supply_robustness.R
 Rscript scripts/tcm/run_tcm_supply_component_and_cluster_checks.R
 Rscript scripts/tcm/run_tcm_supply_contextual_models.R
 Rscript scripts/tcm/run_tcm_supply_falsification_models.R
 Rscript scripts/tcm/run_tcm_supply_bed_physician_models.R
 Rscript scripts/tcm/run_tcm_supply_capital_labor_models.R
-Rscript scripts/tcm/run_tcm_supply_synthesis_models.R
+Rscript scripts/tcm/run_tcm_supply_jhf_enhancements.R
 Rscript scripts/tcm/audit_charls_longitudinal_sample.R
 Rscript scripts/tcm/run_tcm_supply_weighted_attrition_models.R
 Rscript scripts/tcm/run_tcm_supply_longitudinal_identification_models.R

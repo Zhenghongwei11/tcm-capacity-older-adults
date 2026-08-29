@@ -21,7 +21,7 @@ input_dta <- argval(
 )
 linked_tsv <- argval(
   "--linked",
-  "local CHARLS linked table"
+  "results/tcm/person_wave_tcm_core_density_linked.tsv"
 )
 context_tsv <- argval(
   "--context",
@@ -42,6 +42,10 @@ qc_tsv <- argval(
 standardization_tsv <- argval(
   "--standardization-output",
   "results/tcm/province_year_standardization_constants.tsv"
+)
+age_qc_tsv <- argval(
+  "--age-qc-output",
+  "results/tcm/charls_age_harmonization_qc.tsv"
 )
 
 if (!file.exists(input_dta)) stop(sprintf("Missing Harmonized CHARLS file: %s", input_dta))
@@ -253,15 +257,27 @@ analysis <- linked %>%
   mutate(
     person_id = harmonized_charls_id,
     age_model = coalesce(age_harmonized, age),
+    age_model_source = case_when(
+      !is.na(age_harmonized) ~ "Harmonized CHARLS Version D",
+      is.na(age_harmonized) & !is.na(age) ~ "raw CHARLS wave file fallback",
+      TRUE ~ NA_character_
+    ),
+    age_source_difference_years = age_harmonized - age,
+    age_eligibility_discordant = case_when(
+      is.na(age_harmonized) | is.na(age) ~ NA,
+      (age_harmonized >= 60) != (age >= 60) ~ TRUE,
+      TRUE ~ FALSE
+    ),
     main_model_age60 = main_core_density_linked_panel &
-      age_60plus == 1 &
+      !is.na(age_model) &
+      age_model >= 60 &
       !is.na(primary_condition_tcm_any)
   )
 
 py_standardization_vars <- tribble(
   ~source_variable, ~standardized_variable, ~label,
   "value_per_10000_population_tcm_hospital_beds", "z_py_tcm_beds_per_10000", "TCM hospital beds per 10,000 population",
-  "value_per_10000_population_tcm_practicing_assistant_physicians", "z_py_tcm_physicians_per_10000", "TCM physicians per 10,000 population",
+  "value_per_10000_population_tcm_practicing_assistant_physicians", "z_py_tcm_physicians_per_10000", "TCM practicing or assistant physicians per 10,000 population",
   "value_per_10000_population_comprehensive_hospital_beds", "z_py_comprehensive_hospital_beds", "Comprehensive-hospital beds per 10,000 population",
   "value_per_10000_population_hospital_beds", "z_py_hospital_beds", "Hospital beds per 10,000 population",
   "log_gdp_per_capita_current_yuan", "z_py_log_gdp", "Log GDP per capita",
@@ -316,14 +332,38 @@ qc <- bind_rows(lapply(qc_vars, function(v) {
     )
 }))
 
+age_qc <- analysis %>%
+  filter(main_core_density_linked_panel) %>%
+  group_by(year) %>%
+  summarize(
+    n_linked_person_waves = n(),
+    n_age_model_observed = sum(!is.na(age_model)),
+    n_harmonized_age_observed = sum(!is.na(age_harmonized)),
+    n_raw_age_observed = sum(!is.na(age)),
+    n_raw_age_fallback = sum(age_model_source == "raw CHARLS wave file fallback", na.rm = TRUE),
+    n_absolute_difference_gt_1_year = sum(abs(age_source_difference_years) > 1, na.rm = TRUE),
+    n_age60_eligibility_discordant = sum(age_eligibility_discordant, na.rm = TRUE),
+    n_raw_eligible_harmonized_ineligible = sum(age >= 60 & age_harmonized < 60, na.rm = TRUE),
+    n_raw_ineligible_harmonized_eligible = sum(age < 60 & age_harmonized >= 60, na.rm = TRUE),
+    n_final_age60_with_primary_outcome = sum(main_model_age60, na.rm = TRUE),
+    minimum_age_model = min(age_model, na.rm = TRUE),
+    maximum_age_model = max(age_model, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    age_definition = "Harmonized CHARLS age; raw wave age used only when harmonized age is unavailable"
+  )
+
 write_tsv(covariates, covariates_tsv)
 write_tsv(analysis, analysis_tsv)
 write_tsv(qc, qc_tsv)
+write_tsv(age_qc, age_qc_tsv)
 write_tsv(standardization_constants, standardization_tsv)
 
 cat(sprintf("Wrote %s\n", covariates_tsv))
 cat(sprintf("Wrote %s\n", analysis_tsv))
 cat(sprintf("Wrote %s\n", qc_tsv))
+cat(sprintf("Wrote %s\n", age_qc_tsv))
 cat(sprintf("Wrote %s\n", standardization_tsv))
 print(analysis %>% count(year, main_model_age60, name = "n_person_waves"))
 print(qc %>% filter(variable %in% c("female", "education_group", "chronic_count", "log_household_income")))

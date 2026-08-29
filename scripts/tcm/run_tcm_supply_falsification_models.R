@@ -76,7 +76,7 @@ future_supply <- read_tsv(context_tsv, show_col_types = FALSE) %>%
   select(province_supply_key, year, next_year, future_tcm_beds)
 
 analysis <- read_tsv(analysis_tsv, show_col_types = FALSE) %>%
-  filter(main_core_density_linked_panel, age_60plus == 1) %>%
+  filter(main_model_age60) %>%
   left_join(future_supply, by = c("province_supply_key", "year")) %>%
   mutate(
     province_fe = factor(province_supply_key),

@@ -1,34 +1,56 @@
-# Reported Tables
+# Manuscript Tables
 
 ## Table 1. Characteristics of CHARLS Respondents Aged 60 Years or Older
 
 | Year | Observations | Respondents | Age, mean | Female, % | Rural residence, % | Public insurance, % | Chronic conditions, mean | Multimorbidity, % | ADL limitation, % | Disease-specific TCM use, % | TCM hospital visit, % |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2011 | 7,626 | 7,626 | 67.8 | 49.8 | 60.4 | 92.2 | 1.6 | 44.7 | 16.4 | 19.0 | 1.2 |
+| 2011 | 7,340 | 7,340 | 68.4 | 49.8 | 60.1 | 91.9 | 1.6 | 44.7 | 16.7 | 19.1 | 1.2 |
 | 2013 | 8,481 | 8,481 | 68.4 | 49.8 | 60.1 | 95.5 | 1.7 | 48.2 | 15.8 | 18.6 | 1.5 |
 | 2015 | 9,814 | 9,814 | 68.5 | 50.6 | 60.3 | 89.8 | 2.2 | 59.5 | 18.7 | 21.5 | 1.5 |
 | 2018 | 10,776 | 10,776 | 69.2 | 51.3 | 60.4 | 96.1 | 2.5 | 64.5 | 19.0 | 24.8 | 1.2 |
-| Overall | 36,697 | 13,871 | 68.5 | 50.5 | 60.3 | 93.5 | 2.0 | 55.3 | 17.7 | 21.3 | 1.4 |
+| Overall | 36,411 | 13,821 | 68.6 | 50.5 | 60.2 | 93.5 | 2.0 | 55.4 | 17.7 | 21.3 | 1.4 |
 
-Note: Values are person-wave summaries unless labelled as respondents. Percentages are unweighted. ADL indicates activities of daily living; CHARLS, China Health and Retirement Longitudinal Study; TCM, traditional Chinese medicine. Fully adjusted models used the subset with complete model covariates: 32,914 observations from 13,138 respondents.
+Note: Values are unweighted person-wave summaries. The fully adjusted sample comprised 32,634 observations from 13,083 respondents. ADL indicates activities of daily living; TCM, traditional Chinese medicine.
 
-## Table 2. TCM Capacity, Specificity, and Treatment Use Among Older Adults
+## Table 2. TCM Capacity, Resource Context, and Treatment Use Among Older Adults
 
-| Analysis | Outcome | Measure | Estimate (95% CI) | Conventional P value | Small-cluster P value |
+| Analysis | Outcome | Measure | Estimate | Conventional P value | Small-cluster inference |
 | --- | --- | --- | --- | --- | --- |
-| Primary outcome | Disease-specific TCM treatment use | TCM hospital beds per 10,000 population | 2.06 (0.19 to 3.93) | 0.032 | 0.117 CR2; 0.168 wild-cluster |
-| Primary outcome | Disease-specific TCM treatment use | TCM physicians per 10,000 population | -0.77 (-4.46 to 2.91) | 0.670 |  |
-| Health-system context | Disease-specific TCM treatment use | TCM hospital beds, adjusted for comprehensive-hospital beds | 2.50 (1.00 to 3.99) | 0.002 | 0.064 CR2; 0.118 wild-cluster |
-| Health-system context | Disease-specific TCM treatment use | Comprehensive-hospital beds, adjusted for TCM beds | -1.87 (-4.62 to 0.88) | 0.173 | 0.216 CR2 |
-| Strict institution use | TCM hospital visit in past month | TCM hospital beds per 10,000 population | 0.29 (0.01 to 0.57) | 0.044 |  |
-| Broader health-care use | Any doctor visit or outpatient care in past month | TCM hospital beds per 10,000 population | 1.79 (0.58 to 3.00) | 0.005 |  |
-| Joint resource model | Disease-specific TCM treatment use | TCM beds, TCM physicians, comprehensive beds, GDP, and urbanization entered jointly | 3.12 (1.30 to 4.95) | 0.002 | 0.035 CR2 |
-| Joint resource model | Disease-specific TCM treatment use | TCM physicians in the same joint resource model | -2.12 (-5.38 to 1.14) | 0.193 |  |
-| Need-related heterogeneity | Multimorbidity vs no multimorbidity | Interaction with TCM hospital bed density | 2.99 (1.26 to 4.72) | 0.0015 | 0.0088 Holm-adjusted |
+| Primary outcome | Disease-specific TCM treatment use | TCM hospital beds | 2.11 (0.09 to 4.13) | 0.041 | CR2 0.136; wild-cluster 0.198 |
+| Primary outcome | Disease-specific TCM treatment use | TCM physicians | -0.78 (-4.62 to 3.06) | 0.680 | Not estimated |
+| Health-system context | Disease-specific TCM treatment use | TCM beds adjusted for comprehensive-hospital beds | 2.60 (1.04 to 4.17) | 0.002 | CR2 0.068; wild-cluster 0.130 |
+| Health-system context | Disease-specific TCM treatment use | Comprehensive-hospital beds adjusted for TCM beds | -2.08 (-4.89 to 0.72) | 0.139 | CR2 0.183 |
+| Strict institution use | TCM hospital visit in past month | TCM hospital beds | 0.36 (0.09 to 0.63) | 0.011 | Not estimated |
+| Broader health-care use | Any doctor or outpatient visit | TCM hospital beds | 1.97 (0.75 to 3.19) | 0.003 | Not estimated |
+| Joint resource model | Disease-specific TCM treatment use | TCM hospital beds | 3.18 (1.41 to 4.95) | 0.001 | CR2 0.030 |
+| Joint resource model | Disease-specific TCM treatment use | TCM physicians | -2.19 (-5.38 to 1.01) | 0.171 | CR2 0.274 |
+| Joint resource model | Disease-specific TCM treatment use | Comprehensive-hospital beds | -2.88 (-5.17 to -0.60) | 0.015 | CR2 0.040 |
+| Coefficient contrast | Disease-specific TCM treatment use | TCM bed minus physician coefficient | 5.03 (0.05 to 10.01) | 0.048 | CR2 5.03 (-1.53 to 11.59); P = 0.116 |
+| Need-related interaction | Disease-specific TCM treatment use | Multimorbidity, original specification | 2.96 (1.23 to 4.69) | 0.002 | Holm-adjusted P = 0.010 |
+| Need-related interaction | Disease-specific TCM treatment use | Multimorbidity, adjusted for condition count | 1.61 (-0.10 to 3.31) | 0.064 | CR2 P = 0.078 |
 
-Note: Estimates are percentage-point differences per 1-SD higher province-year measure unless labelled as an interaction. Standardization used the 112 linked province-year units represented in the age-eligible CHARLS outcome panel. Conventional P values use province-clustered standard errors. CR2 and wild-cluster values summarize finite-cluster checks; blank cells indicate that the corresponding finite-cluster check was not estimated for that row or was not a primary sensitivity target. GDP indicates gross domestic product; TCM, traditional Chinese medicine.
+Note: Estimates are percentage-point differences per 1-SD higher province-year measure. CR2 and wild-cluster results address inference with 28 province clusters.
 
-## eTable 1. Provincial TCM Hospital Bed and Physician Supply, 2011-2018
+## Supplementary Table 1. Participant Flow, Retention, and Age-Source Quality Control
+
+| Section | Stage or year | Respondents | Observations or count | Detail |
+| --- | --- | --- | --- | --- |
+| Participant flow | linked province-year TCM panel | 25,487 | 76,902 |  |
+| Participant flow | age 60 years or older using harmonized age | 13,834 | 36,470 |  |
+| Participant flow | non-missing primary outcome | 13,821 | 36,411 |  |
+| Participant flow | complete primary-model covariates | 13,083 | 32,634 |  |
+| Participant flow | positive adjusted respondent weight and complete primary-model covariates | 12,849 | 31,940 |  |
+| Wave-to-wave observation | 2011 to 2013 | 7,340 | 6,230 | 84.9% |
+| Wave-to-wave observation | 2013 to 2015 | 8,481 | 7,400 | 87.3% |
+| Wave-to-wave observation | 2015 to 2018 | 9,814 | 8,297 | 84.5% |
+| Age-source quality control | 2011 |  | 482 | discordant eligibility; 161 raw-age fallbacks |
+| Age-source quality control | 2013 |  | 0 | discordant eligibility; 44 raw-age fallbacks |
+| Age-source quality control | 2015 |  | 0 | discordant eligibility; 35 raw-age fallbacks |
+| Age-source quality control | 2018 |  | 0 | discordant eligibility; 64 raw-age fallbacks |
+
+Note: Age eligibility and adjustment use Harmonized CHARLS age, with raw-wave age used only when harmonized age is unavailable.
+
+## Supplementary Table 2. Provincial TCM Hospital Bed and Physician Supply, 2011-2018
 
 | Year | Provinces | TCM hospital beds | Beds per 10,000, mean | Beds per 10,000, range | TCM physicians | Physicians per 10,000, mean | Physicians per 10,000, range |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -37,151 +59,142 @@ Note: Estimates are percentage-point differences per 1-SD higher province-year m
 | 2015 | 31 | 819,412 | 6.19 | 3.92 to 9.26 | 452,190 | 3.42 | 1.93 to 7.35 |
 | 2018 | 31 | 1,021,548 | 7.56 | 4.45 to 11.82 | 575,454 | 4.32 | 2.40 to 9.13 |
 
-Note: Provincial supply indicators were taken from official National Administration of Traditional Chinese Medicine statistical extracts. Physician counts refer to TCM physicians.
+Note: Data are from official National Administration of Traditional Chinese Medicine statistical extracts.
 
-## eTable 2. Formal Interaction Contrasts
+## Supplementary Table 3. Small-Cluster and Province-Influence Sensitivity
 
-| Stratum | Reference | Interaction estimate | Unadjusted P value | Holm-adjusted P value | Observations | Provinces |
-| --- | --- | --- | --- | --- | --- | --- |
-| Rural residence | Urban residence | 0.53 (-0.46 to 1.51) | 0.282 | 1.000 | 32,914 | 28 |
-| Lower education | Higher education | 0.36 (-1.58 to 2.31) | 0.704 | 1.000 | 32,914 | 28 |
-| Lower household income | Higher household income | 0.39 (-0.82 to 1.60) | 0.514 | 1.000 | 32,914 | 28 |
-| Income missing | Higher household income | 0.75 (-0.78 to 2.27) | 0.323 | 1.000 | 32,914 | 28 |
-| Multimorbidity | No multimorbidity | 2.99 (1.26 to 4.72) | 0.0015 | 0.0088 | 32,914 | 28 |
-| ADL limitation | No ADL limitation | 0.27 (-1.39 to 1.94) | 0.739 | 1.000 | 32,914 | 28 |
+| Sensitivity analysis | Estimate | Interval or detail | P value |
+| --- | --- | --- | --- |
+| Main province-clustered estimate | 2.11 | 0.09 to 4.13 (95% CI) | 0.041 |
+| CR2 small-cluster inference | 2.11 | 1.17 SE; 4.58 df | 0.136 |
+| Wild-cluster inference | 2.11 | 9,999 Webb-weight repetitions | 0.198 |
+| Leave-one-province-out | 2.13 | 0.85 to 2.43 (min-max) |  |
+| Province resampling | 2.01 | -0.89 to 3.64 (95% interval) |  |
 
-Note: Interaction estimates are additional percentage-point differences per 1-SD higher TCM hospital bed density compared with the reference group. Lower household income denotes income quartiles 1 and 2; higher household income denotes quartiles 3 and 4. Missing income was retained as a separate stratum.
+Note: The leave-one-province-out row reports a median and min-max range, not a confidence interval.
 
-## eTable 3. Component Checks for the Primary TCM Treatment Composite
+## Supplementary Table 4. Joint Resource and Capital-Labor Structure Models
+
+| Model | Measure | Conventional estimate | Conventional P value | CR2 estimate or P value |
+| --- | --- | --- | --- | --- |
+| Joint contextual resource model | TCM hospital beds | 3.18 (1.41 to 4.95) | 0.001 | 3.18 (0.48 to 5.88); P = 0.030 |
+| Joint contextual resource model | TCM physicians | -2.19 (-5.38 to 1.01) | 0.171 | -2.19 (-6.61 to 2.24); P = 0.274 |
+| Joint contextual resource model | Comprehensive-hospital beds | -2.88 (-5.17 to -0.60) | 0.015 | -2.88 (-5.60 to -0.16); P = 0.040 |
+| Bed-to-physician ratio only | TCM hospital beds per TCM practicing or assistant physician | 1.41 (-0.71 to 3.53) | 0.183 | 1.41 (-1.30 to 4.11); P = 0.263 |
+| Bed density and physician density coefficient contrast | Difference between TCM bed-density and physician-density associations | 5.03 (0.05 to 10.01) | 0.048 | 5.03 (-1.53 to 11.59); P = 0.116 |
+
+Note: Coefficients in joint models are mutually adjusted for correlated province-year resource measures.
+
+## Supplementary Table 5. Outcome and Resource Specificity Synthesis
+
+| Analysis | Outcome | Exposure | Estimate | P value | Small-cluster P value |
+| --- | --- | --- | --- | --- | --- |
+| Primary outcome | Disease-specific TCM treatment use | TCM practicing/assistant physicians per 10,000 population | -0.78 (-4.62 to 3.06) | 0.680 |  |
+| Primary outcome | Disease-specific TCM treatment use | TCM hospital beds per 10,000 population | 2.11 (0.09 to 4.13) | 0.041 | 0.198 |
+| Strict TCM institution use | TCM hospital visit in the past month | TCM practicing/assistant physicians per 10,000 population | -0.02 (-0.63 to 0.59) | 0.948 |  |
+| Strict TCM institution use | TCM hospital visit in the past month | TCM hospital beds per 10,000 population | 0.36 (0.09 to 0.63) | 0.011 |  |
+| Health-system context | Disease-specific TCM treatment use | TCM hospital beds per 10,000 population | 2.60 (1.04 to 4.17) | 0.002 | 0.130 |
+| Health-system context | Disease-specific TCM treatment use | Comprehensive-hospital beds per 10,000 population | -2.08 (-4.89 to 0.72) | 0.139 |  |
+| Broader health-care use | Any doctor visit or outpatient care in the past month | Concurrent TCM hospital beds per 10,000 population | 1.97 (0.75 to 3.19) | 0.003 |  |
+| Broader health-care use | Any doctor visit or outpatient care in the past month | Comprehensive-hospital beds per 10,000 population | -1.62 (-4.83 to 1.60) | 0.311 |  |
+| Broader health-care use | Any hospital stay in the past year | Concurrent TCM hospital beds per 10,000 population | 0.79 (-0.93 to 2.51) | 0.353 |  |
+| Broader health-care use | Any hospital stay in the past year | Comprehensive-hospital beds per 10,000 population | -1.03 (-3.33 to 1.26) | 0.365 |  |
+| Joint resource model | Disease-specific TCM treatment use | Concurrent TCM hospital beds per 10,000 population | 3.18 (1.41 to 4.95) | 0.001 |  |
+| Joint resource model | Disease-specific TCM treatment use | Concurrent TCM practicing/assistant physicians per 10,000 population | -2.19 (-5.38 to 1.01) | 0.171 |  |
+| Joint resource model | Disease-specific TCM treatment use | Comprehensive-hospital beds per 10,000 population | -2.88 (-5.17 to -0.60) | 0.015 |  |
+
+Note: General outpatient and hospital outcomes are broader utilization checks, not strict negative controls.
+
+## Supplementary Table 6. Weighting and Longitudinal Identification
+
+| Model | Estimate | P value | Respondents | Observations |
+| --- | --- | --- | --- | --- |
+| Unweighted primary model | 2.11 (0.09 to 4.13) | 0.041 | 13,083 | 32,634 |
+| Adjusted respondent-weight model | 0.69 (-1.61 to 2.98) | 0.544 | 12,849 | 31,940 |
+| Trimmed respondent-weight model | 1.14 (-0.92 to 3.20) | 0.267 | 12,849 | 31,940 |
+| individual and wave fixed effects | 2.08 (-0.28 to 4.44) | 0.082 | 10,151 | 29,702 |
+| province and wave fixed effects with person means | 2.00 (0.01 to 3.99) | 0.048 | 10,151 | 29,702 |
+| province and wave fixed effects plus province-specific linear trends | 0.62 (-3.21 to 4.45) | 0.742 | 13,083 | 32,634 |
+
+Note: Weighted models target wave-specific representation; individual and province-trend models use different identifying variation.
+
+## Supplementary Table 7. Component Checks for the Primary Composite
 
 | Component | Events | Event prevalence, % | Estimate | P value |
 | --- | --- | --- | --- | --- |
-| Dyslipidemia | 752 | 2.28 | 0.64 (0.10 to 1.19) | 0.023 |
-| Chronic lung disease | 1,098 | 3.34 | 0.32 (-0.79 to 1.42) | 0.559 |
-| Liver disease | 298 | 0.91 | 0.47 (0.14 to 0.81) | 0.007 |
-| Heart disease | 1,463 | 4.44 | 0.72 (-0.11 to 1.55) | 0.086 |
-| Kidney disease | 599 | 1.82 | -0.03 (-0.33 to 0.27) | 0.847 |
-| Digestive disease | 1,753 | 5.33 | 1.15 (-0.19 to 2.49) | 0.089 |
-| Memory-related disease | 162 | 0.49 | 0.27 (0.03 to 0.51) | 0.032 |
-| Arthritis or rheumatism | 2,735 | 8.31 | 0.58 (-0.60 to 1.76) | 0.325 |
-| Hypertension | 1,465 | 4.45 | 1.04 (0.02 to 2.06) | 0.045 |
-| Diabetes | 427 | 1.30 | -0.20 (-0.55 to 0.15) | 0.242 |
-| Cancer | 107 | 0.33 | 0.02 (-0.08 to 0.12) | 0.750 |
-| Stroke, Chinese medicine | 417 | 1.27 | 0.95 (0.58 to 1.31) | <0.001 |
-| Stroke, acupuncture or moxibustion | 155 | 0.47 | 0.08 (-0.19 to 0.36) | 0.526 |
+| Dyslipidemia | 748 | 2.29 | 0.65 (0.11 to 1.19) | 0.021 |
+| Chronic lung | 1,086 | 3.33 | 0.41 (-0.61 to 1.42) | 0.418 |
+| Liver | 294 | 0.90 | 0.52 (0.18 to 0.86) | 0.004 |
+| Heart | 1,458 | 4.47 | 0.78 (-0.10 to 1.65) | 0.081 |
+| Kidney | 593 | 1.82 | 0.03 (-0.31 to 0.37) | 0.852 |
+| Digestive | 1,740 | 5.33 | 1.36 (-0.03 to 2.75) | 0.055 |
+| Memory | 162 | 0.50 | 0.27 (0.03 to 0.52) | 0.031 |
+| Arthritis | 2,713 | 8.31 | 0.63 (-0.50 to 1.77) | 0.263 |
+| Hypertension | 1,454 | 4.46 | 0.97 (-0.13 to 2.06) | 0.081 |
+| Diabetes | 425 | 1.30 | -0.25 (-0.63 to 0.12) | 0.179 |
+| Cancer | 107 | 0.33 | 0.01 (-0.09 to 0.12) | 0.781 |
+| Stroke, Chinese medicine | 414 | 1.27 | 0.94 (0.56 to 1.32) | <0.001 |
+| Stroke, acupuncture or moxibustion | 155 | 0.47 | 0.09 (-0.19 to 0.36) | 0.524 |
 
-Note: Estimates are percentage-point differences per 1-SD higher provincial TCM hospital bed density. Components with few events should be interpreted as descriptive checks of the composite outcome.
+Note: Components with few events are descriptive checks of the composite outcome.
 
-## eTable 4. Sensitivity to Cluster Variance and Individual Province Influence
-
-| Sensitivity analysis | Specification | Estimate | Interval or range | P value | Observations | Provinces |
-| --- | --- | --- | --- | --- | --- | --- |
-| Main province-clustered estimate | All provinces | 2.06 | 0.19 to 3.93 (95% CI) | 0.032 | 32,914 | 28 |
-| CR2 small-cluster inference | Primary model | 2.06 | SE 1.07; Satterthwaite df 4.57 | 0.117 | 32,914 | 28 |
-| Wild-cluster inference | Bootstrap test for clustered data | 2.06 | 9,999 repetitions | 0.168 | 32,914 | 28 |
-| Leave-one-province-out range | Effect range across omitted provinces | 2.08 | 0.96 to 2.36 (min-max) |  | 32,914 | 28 |
-| Province resampling | 499 weighted province-level resamples | 1.99 | -0.76 to 3.62 (95% CI) |  | 32,914 | 28 |
-
-Note: Estimates are percentage-point differences per 1-SD higher provincial TCM hospital bed density for the primary outcome. CR2 indicates cluster-robust variance estimation with Satterthwaite degrees of freedom; the wild-cluster bootstrap used Webb weights.
-
-## eTable 5. General Health-System and Province-Context Adjustment
-
-| Model | TCM bed estimate | Conventional P value | CR2 P value | Wild-cluster P value |
-| --- | --- | --- | --- | --- |
-| Main individual-covariate model | 2.06 (0.19 to 3.93) | 0.032 | 0.117 | 0.168 |
-| Add comprehensive-hospital bed density | 2.50 (1.00 to 3.99) | 0.002 | 0.064 | 0.118 |
-| Add provincial GDP per capita and urbanization | 2.00 (-0.00 to 4.01) | 0.050 |  |  |
-| Comprehensive-hospital beds, GDP per capita, and urbanization | 2.67 (0.92 to 4.42) | 0.004 |  | 0.071 |
-| Add province-level population aged 65 years or older | 2.54 (0.57 to 4.51) | 0.013 |  |  |
-
-Note: Estimates are percentage-point differences per 1-SD higher provincial TCM hospital bed density. Comprehensive-hospital beds are a co-exposure, not a placebo.
-
-## eTable 6. Specificity Synthesis
-
-| Analysis | Outcome | Exposure | Estimate (95% CI) | P value |
-| --- | --- | --- | --- | --- |
-| Primary outcome | Disease-specific TCM treatment use | TCM hospital beds per 10,000 population | 2.06 (0.19 to 3.93) | 0.032 |
-| Primary outcome | Disease-specific TCM treatment use | TCM physicians per 10,000 population | -0.77 (-4.46 to 2.91) | 0.670 |
-| Strict TCM institution use | TCM hospital visit in the past month | TCM hospital beds per 10,000 population | 0.29 (0.01 to 0.57) | 0.044 |
-| Health-system context | Disease-specific TCM treatment use | Comprehensive-hospital beds per 10,000 population | -1.87 (-4.62 to 0.88) | 0.173 |
-| Broader health-care use | Any doctor visit or outpatient care in the past month | TCM hospital beds per 10,000 population | 1.79 (0.58 to 3.00) | 0.005 |
-| Broader health-care use | Any hospital stay in the past year | TCM hospital beds per 10,000 population | 0.78 (-0.87 to 2.43) | 0.339 |
-| Joint resource model | Disease-specific TCM treatment use | TCM hospital beds per 10,000 population | 3.12 (1.30 to 4.95) | 0.002 |
-| Joint resource model | Disease-specific TCM treatment use | TCM physicians per 10,000 population | -2.12 (-5.38 to 1.14) | 0.193 |
-
-Note: The synthesis consolidates primary, strict-institution, broader utilization, and joint-resource checks used to interpret provincial TCM bed density as a service-capacity measure.
-
-## eTable 7. Weighting and Longitudinal Identification Sensitivity Analyses
-
-| Model | Estimate | P value | Respondents | Observations | Effective observations |
-| --- | --- | --- | --- | --- | --- |
-| Unweighted primary model | 2.06 (0.19 to 3.93) | 0.032 | 13,138 | 32,914 | 32,914 |
-| Adjusted respondent-weight model | 0.74 (-1.39 to 2.86) | 0.484 | 12,908 | 32,220 | 17,789 |
-| Adjusted respondent weight, 1st-99th percentile truncation | 1.14 (-0.80 to 3.08) | 0.239 | 12,908 | 32,220 | 24,106 |
-| Individual and wave fixed effects | 2.02 (-0.22 to 4.26) | 0.076 | 10,185 | 29,961 |  |
-| Province and wave fixed effects with person means | 1.95 (0.07 to 3.84) | 0.043 | 10,185 | 29,961 |  |
-| Province and wave fixed effects plus province-specific linear trends | 1.16 (-2.42 to 4.74) | 0.512 | 13,138 | 32,914 |  |
-
-Note: Weighted models use wave-specific individual cross-sectional weights with household and individual non-response adjustment, normalized within wave. They are estimand-specific sensitivities rather than replacements for the unweighted association model.
-
-## eTable 8. Sensitivity Analysis Excluding Outcome Components
+## Supplementary Table 8. Sensitivity Analysis Excluding Outcome Components
 
 | Composite definition | Outcome prevalence, % | Estimate | P value | Observations |
 | --- | --- | --- | --- | --- |
-| Primary composite model | 21.51 | 2.06 (0.19 to 3.93) | 0.032 | 32,914 |
-| Excluding dyslipidemia | 20.99 | 2.00 (0.22 to 3.78) | 0.029 | 32,914 |
-| Excluding chronic lung disease | 20.21 | 2.00 (0.03 to 3.96) | 0.046 | 32,914 |
-| Excluding liver disease | 21.29 | 1.96 (0.05 to 3.87) | 0.045 | 32,914 |
-| Excluding heart disease | 19.91 | 2.05 (0.45 to 3.65) | 0.014 | 32,914 |
-| Excluding kidney disease | 20.98 | 1.96 (0.13 to 3.79) | 0.037 | 32,914 |
-| Excluding digestive disease | 19.30 | 1.59 (0.16 to 3.02) | 0.031 | 32,914 |
-| Excluding arthritis or rheumatism | 17.23 | 2.13 (0.03 to 4.23) | 0.047 | 32,914 |
-| Excluding hypertension | 19.78 | 1.87 (0.23 to 3.52) | 0.027 | 32,914 |
-| Excluding diabetes | 21.05 | 2.23 (0.38 to 4.08) | 0.020 | 32,914 |
-| Excluding stroke-related Chinese medicine | 21.18 | 1.85 (-0.05 to 3.75) | 0.056 | 32,914 |
+| Primary composite reproduction | 21.54 | 2.11 (0.09 to 4.13) | 0.041 | 32,634 |
+| Leave one out dyslipidemia | 21.03 | 2.08 (0.16 to 4.00) | 0.035 | 32,634 |
+| Leave one out chronic lung | 20.24 | 2.08 (0.00 to 4.16) | 0.050 | 32,634 |
+| Leave one out liver | 21.32 | 2.01 (-0.04 to 4.06) | 0.054 | 32,634 |
+| Leave one out heart | 19.93 | 2.12 (0.32 to 3.92) | 0.023 | 32,634 |
+| Leave one out kidney | 21.01 | 2.02 (0.04 to 4.00) | 0.046 | 32,634 |
+| Leave one out digestive | 19.33 | 1.63 (0.14 to 3.11) | 0.033 | 32,634 |
+| Leave one out memory | 21.46 | 2.12 (0.04 to 4.19) | 0.046 | 32,634 |
+| Leave one out arthritis | 17.26 | 2.17 (-0.05 to 4.39) | 0.055 | 32,634 |
+| Leave one out hypertension | 19.80 | 1.96 (0.21 to 3.72) | 0.030 | 32,634 |
+| Leave one out diabetes | 21.07 | 2.30 (0.32 to 4.29) | 0.024 | 32,634 |
+| Leave one out cancer | 21.40 | 2.25 (0.26 to 4.24) | 0.028 | 32,634 |
+| Leave one out stroke chinese medicine | 21.21 | 1.92 (-0.12 to 3.97) | 0.064 | 32,634 |
+| Leave one out stroke acupuncture moxibustion | 21.34 | 2.17 (0.10 to 4.24) | 0.040 | 32,634 |
+| Omit cardiometabolic | 15.36 | 1.67 (0.33 to 3.01) | 0.017 | 32,634 |
+| Omit musculoskeletal | 17.26 | 2.17 (-0.05 to 4.39) | 0.055 | 32,634 |
+| Omit digestive hepatorenal | 18.39 | 1.46 (0.04 to 2.88) | 0.044 | 32,634 |
 
-Note: Each model reconstructs the primary outcome after omitting the named component or clinically coherent component family and retains the main fixed-effects and covariate specification.
+Note: Each model reconstructs the primary outcome after omitting the named component or component family.
 
-## eTable 9. Analytic Participant Flow and Wave-to-Wave Observation
+## Supplementary Table 9. Need-, Access-, and Region-Related Estimates
 
-| Section | Stage or interval | Respondents | Observations or next wave with data | Percent |
+| Group | Interaction estimate | P value | Holm-adjusted P value | Provinces |
 | --- | --- | --- | --- | --- |
-| Participant flow | Linked province-year TCM panel | 25,487 | 76,902 |  |
-| Participant flow | Age 60 years or older | 13,885 | 36,756 |  |
-| Participant flow | Nonmissing primary outcome | 13,871 | 36,697 |  |
-| Participant flow | Nonmissing covariates for primary adjusted model | 13,138 | 32,914 |  |
-| Participant flow | Positive adjusted respondent weight and nonmissing covariates for primary adjusted model | 12,908 | 32,220 |  |
-| Figure 1 Panel A source | Balanced four-wave panel with primary outcome data in each wave | 4,781 | 19,124 | 34.5 |
-| Wave-to-wave observation | 2011 to 2013 | 7,626 | 6,410 | 84.1 |
-| Wave-to-wave observation | 2013 to 2015 | 8,481 | 7,400 | 87.3 |
-| Wave-to-wave observation | 2015 to 2018 | 9,814 | 8,297 | 84.5 |
+| Rural residence | 0.47 (-0.55 to 1.49) | 0.351 | 1.000 | 28 |
+| Lower education | 0.36 (-1.67 to 2.38) | 0.721 | 1.000 | 28 |
+| Lower income | 0.31 (-0.95 to 1.56) | 0.620 | 1.000 | 28 |
+| Income missing | 0.71 (-0.79 to 2.22) | 0.341 | 1.000 | 28 |
+| Multimorbidity | 2.96 (1.23 to 4.69) | 0.002 | 0.010 | 28 |
+| ADL limitation | 0.25 (-1.38 to 1.87) | 0.759 | 1.000 | 28 |
+| Central region | 1.35 (-4.27 to 6.97) | 0.564 |  | 6 |
+| East region | -3.60 (-7.70 to 0.50) | 0.078 |  | 9 |
+| Northeast region | Not estimated |  |  | 3 |
+| West region | 1.98 (-0.81 to 4.78) | 0.143 |  | 10 |
 
-Note: The Figure 1 Panel A row identifies the balanced descriptive panel used only for the alluvial trajectory display; the percent is calculated among respondents with a nonmissing primary outcome in the linked descriptive sample. Subsequent observation combines continued eligibility and survey participation; it should not be interpreted as pure nonresponse because death and other reasons for nonobservation are not separated in this table.
+Note: The first six rows are formal interaction coefficients from five domains. Region rows are exploratory stratified estimates; the northeast model was not estimable with only three province clusters.
 
-## eTable 10. Multimorbidity Phenotype Interaction Models
+## Supplementary Table 10. Multimorbidity Outcome-Opportunity Checks
 
-| Phenotype | Definition | Phenotype prevalence, % | TCM use if present, % | TCM use if absent, % | Bed association if present | Additional association vs absent | Interaction P value | Holm-adjusted P value | Observations |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Cardiometabolic or cerebrovascular multimorbidity | At least 2 diagnosed conditions among hypertension, diabetes, dyslipidemia, heart disease, and stroke | 25.7 | 33.6 | 17.3 | 3.75 (2.08 to 5.42) | 2.29 (0.95 to 3.62) | 0.0015 | 0.0077 | 32,871 |
-| Arthritis with multimorbidity | Arthritis or rheumatism plus at least 1 other chronic condition | 34.0 | 34.4 | 14.8 | 3.67 (1.19 to 6.15) | 2.09 (0.40 to 3.78) | 0.0173 | 0.0595 | 32,656 |
-| Chronic lung disease with multimorbidity | Chronic lung disease plus at least 1 other chronic condition | 14.4 | 35.6 | 19.1 | 4.50 (2.58 to 6.41) | 2.63 (0.56 to 4.70) | 0.0149 | 0.0595 | 32,634 |
-| Digestive, liver, or kidney disease with multimorbidity | Digestive disease, liver disease, or kidney disease among respondents with at least 2 chronic conditions | 30.0 | 35.3 | 15.6 | 3.46 (1.01 to 5.91) | 1.76 (0.11 to 3.41) | 0.0370 | 0.0741 | 32,772 |
-| Memory disease or stroke with multimorbidity | Memory-related disease or stroke among respondents with at least 2 chronic conditions | 8.4 | 39.8 | 19.8 | 4.19 (1.88 to 6.51) | 1.91 (-0.53 to 4.36) | 0.1202 | 0.1202 | 32,756 |
+| Analysis | Denominator | Interaction estimate | Conventional P value | CR2 estimate | CR2 P value | Holm-adjusted CR2 P value | Events |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Continuous chronic-condition burden | All age-eligible observations | 0.48 (0.01 to 0.95) | 0.047 | 0.48 (-0.04 to 1.00) | 0.068 |  | 7,029 |
+| Multimorbidity adjusted for condition count | All age-eligible observations | 1.61 (-0.10 to 3.31) | 0.064 | 1.61 (-0.20 to 3.42) | 0.078 |  | 7,029 |
+| Hypertension | Respondents diagnosed with hypertension | -2.07 (-3.83 to -0.32) | 0.022 | -2.07 (-3.90 to -0.25) | 0.028 | 0.310 | 1,371 |
+| Diabetes | Respondents diagnosed with diabetes | 1.27 (-2.89 to 5.42) | 0.537 | 1.27 (-3.38 to 5.92) | 0.553 | 1.000 | 383 |
+| Cancer | Respondents diagnosed with cancer | 4.96 (-8.82 to 18.75) | 0.466 | 4.96 (-9.99 to 19.91) | 0.478 | 1.000 | 93 |
+| Chronic lung disease | Respondents diagnosed with chronic lung disease | 1.52 (-2.19 to 5.23) | 0.408 | 1.52 (-2.35 to 5.40) | 0.419 | 1.000 | 941 |
+| Heart disease | Respondents diagnosed with heart disease | 3.28 (0.12 to 6.44) | 0.042 | 3.28 (-0.16 to 6.73) | 0.059 | 0.595 | 1,352 |
+| Arthritis | Respondents diagnosed with arthritis | -0.91 (-3.09 to 1.27) | 0.397 | -0.91 (-3.24 to 1.41) | 0.413 | 1.000 | 2,479 |
+| Dyslipidemia | Respondents diagnosed with dyslipidemia | 2.55 (-0.86 to 5.97) | 0.137 | 2.55 (-1.08 to 6.18) | 0.154 | 1.000 | 718 |
+| Liver disease | Respondents diagnosed with liver disease | -0.24 (-6.96 to 6.48) | 0.942 | -0.24 (-7.40 to 6.92) | 0.943 | 1.000 | 241 |
+| Kidney disease | Respondents diagnosed with kidney disease | 3.98 (-0.79 to 8.75) | 0.098 | 3.98 (-1.30 to 9.27) | 0.125 | 1.000 | 500 |
+| Digestive disease | Respondents diagnosed with digestive disease | 2.04 (-0.92 to 4.99) | 0.169 | 2.04 (-1.09 to 5.17) | 0.187 | 1.000 | 1,569 |
+| Memory disorder | Respondents diagnosed with memory disorder | -7.08 (-19.25 to 5.08) | 0.243 | -7.08 (-21.20 to 7.03) | 0.286 | 1.000 | 140 |
 
-Note: Phenotypes are non-mutually exclusive and were defined from CHARLS chronic disease diagnoses rather than treatment-use components. Models included province and survey-year fixed effects and the primary covariate set except chronic disease count, because the phenotype definitions already encode chronic disease burden. Estimates are percentage-point differences per 1-SD higher provincial TCM hospital bed density.
-
-## eTable 11. Capital-Labor Structure Models for TCM Capacity
-
-| Model | Measure | Estimate (95% CI) | Conventional P value | CR2 P value | VIF | Condition index |
-| --- | --- | --- | --- | --- | --- | --- |
-| Bed-to-physician ratio only | TCM hospital beds per TCM physician | 1.37 (-0.73 to 3.47) | 0.192 | 0.275 | 1.00 | 1.00 |
-| Bed density and physician density | TCM hospital beds per 10,000 population | 2.65 (0.56 to 4.75) | 0.015 | 0.075 | 1.28 | 1.65 |
-| Bed density and physician density | TCM physicians per 10,000 population | -2.27 (-5.91 to 1.36) | 0.210 | 0.320 | 1.28 | 1.65 |
-| Bed density, physician density, and bed-to-physician ratio | TCM hospital beds per 10,000 population | 4.40 (0.25 to 8.55) | 0.039 | 0.072 | 3.98 | 3.75 |
-| Bed density, physician density, and bed-to-physician ratio | TCM physicians per 10,000 population | -4.13 (-8.92 to 0.65) | 0.088 | 0.195 | 2.45 | 3.75 |
-| Bed density, physician density, and bed-to-physician ratio | TCM hospital beds per TCM physician | -1.72 (-5.28 to 1.85) | 0.331 | 0.389 | 3.22 | 3.75 |
-| Bed density, physician density, and their interaction | TCM hospital beds per 10,000 population | 3.19 (-0.10 to 6.48) | 0.057 | 0.085 | 1.80 | 3.23 |
-| Bed density, physician density, and their interaction | TCM physicians per 10,000 population | -1.67 (-7.04 to 3.69) | 0.528 | 0.603 | 2.15 | 3.23 |
-| Bed density, physician density, and their interaction | Bed-density by physician-density interaction | -0.26 (-1.47 to 0.96) | 0.668 | 0.701 | 3.02 | 3.23 |
-
-Note: Models are exploratory mechanism context and use the primary analytic sample, province and survey-year fixed effects, and the primary covariate set. Estimates are percentage-point differences per 1-SD higher province-year measure except the interaction row, which is a percentage-point interaction. The bed-to-physician ratio was standardized across the same 112 linked province-year units used for the main exposures. VIF and condition index summarize collinearity after residualizing province-year exposure measures for province and survey-year fixed effects.
+Note: Diagnosis-eligible models use a fixed condition denominator and adjust for chronic-condition count. Holm adjustment applies across the diagnosis-specific interaction family.

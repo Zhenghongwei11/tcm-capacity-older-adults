@@ -20,7 +20,7 @@ Install the R packages listed in `environment.yml`, then run:
 bash scripts/reproduce_one_click.sh
 ```
 
-The script checks for the expected CHARLS inputs, rebuilds the official supply and province-context tables, reruns the longitudinal models, writes a generated table summary from result files, and regenerates publication figures. The curated reported table set used for the current manuscript version is provided in `tables/tables.md`.
+The script checks for the expected CHARLS inputs, rebuilds the official supply and province-context tables, reruns the longitudinal models, and regenerates reported tables and publication figures.
 
 ## Repository Contents
 
@@ -38,4 +38,4 @@ The repository excludes raw CHARLS files, row-level person-wave analytic tables,
 
 ## Citation
 
-If using this repository, cite the archived release corresponding to the version used and cite CHARLS and the official statistical sources according to their source requirements. The current repository version is v1.0.2: https://doi.org/10.5281/zenodo.21849158.
+If using this repository, cite the version-specific archived release recorded in `CITATION.cff` on the main branch and cite CHARLS and the official statistical sources according to their source requirements.
