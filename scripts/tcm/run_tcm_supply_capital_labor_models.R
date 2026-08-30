@@ -90,6 +90,9 @@ analysis <- analysis_raw %>%
     outcome_primary = as.numeric(primary_condition_tcm_any),
     z_tcm_beds = z_py_tcm_beds_per_10000,
     z_tcm_physicians = z_py_tcm_physicians_per_10000,
+    z_comprehensive_beds = z_py_comprehensive_hospital_beds,
+    z_log_gdp = z_py_log_gdp,
+    z_urbanization = z_py_urbanization,
     z_resource_sum = (z_py_tcm_beds_per_10000 + z_py_tcm_physicians_per_10000) / 2,
     z_resource_difference = (z_py_tcm_beds_per_10000 - z_py_tcm_physicians_per_10000) / 2,
     bed_physician_interaction = z_tcm_beds * z_tcm_physicians
@@ -274,6 +277,75 @@ fit_bed_physician_contrast <- function() {
   )
 }
 
+fit_resource_composition_contrast <- function(model_id, model_label, additional_terms) {
+  resource_terms <- c("z_tcm_beds", "z_comprehensive_beds")
+  rhs <- c(resource_terms, additional_terms, individual_covariates, "province_fe", "wave_fe")
+  formula <- as.formula(paste("outcome_primary ~", paste(rhs, collapse = " + ")))
+  needed <- all.vars(formula)
+  d <- analysis %>% filter(if_all(all_of(needed), ~ !is.na(.x)))
+  fit <- lm(formula, data = d)
+
+  contrast <- rep(0, length(coef(fit)))
+  names(contrast) <- names(coef(fit))
+  contrast[["z_tcm_beds"]] <- 1
+  contrast[["z_comprehensive_beds"]] <- -1
+
+  conventional_vcov <- cluster_vcov(fit, d$province_supply_key)
+  conventional_df <- n_distinct(d$province_supply_key) - 1
+  beta <- scalar_dbl(sum(contrast * coef(fit)))
+  se <- scalar_dbl(sqrt(t(contrast) %*% conventional_vcov %*% contrast))
+  ci <- beta + c(-1, 1) * qt(0.975, df = conventional_df) * se
+  pvalue <- 2 * pt(abs(beta / se), df = conventional_df, lower.tail = FALSE)
+
+  contrast_matrix <- matrix(
+    contrast,
+    nrow = 1,
+    dimnames = list("TCM beds minus comprehensive-hospital beds", names(contrast))
+  )
+  cr2 <- tryCatch(
+    linear_contrast(
+      fit,
+      vcov = "CR2",
+      cluster = d$province_supply_key,
+      contrasts = contrast_matrix,
+      p_values = TRUE
+    ),
+    error = function(e) NULL
+  )
+  cr2_ci <- c(NA_real_, NA_real_)
+  cr2_p <- cr2_df <- NA_real_
+  if (!is.null(cr2)) {
+    cr2_ci <- c(scalar_dbl(cr2$CI_L), scalar_dbl(cr2$CI_U))
+    cr2_p <- scalar_dbl(cr2$p_val)
+    cr2_df <- scalar_dbl(cr2$df)
+  }
+
+  tibble(
+    model = model_id,
+    model_label = model_label,
+    exposure = "Difference between TCM bed-density and comprehensive-hospital-bed associations",
+    effect_type = "percentage-point difference between coefficients per 1-SD higher province-year bed density",
+    effect = 100 * beta,
+    ci_lower = 100 * ci[[1]],
+    ci_upper = 100 * ci[[2]],
+    conventional_pvalue = pvalue,
+    cr2_ci_lower = 100 * cr2_ci[[1]],
+    cr2_ci_upper = 100 * cr2_ci[[2]],
+    cr2_pvalue = cr2_p,
+    cr2_df = cr2_df,
+    n_persons = n_distinct(d$person_id),
+    n_person_waves = nrow(d),
+    n_clusters = n_distinct(d$province_supply_key),
+    n_province_years = n_distinct(paste(d$province_supply_key, d$year)),
+    interpretation_role = "Focused secondary resource-composition contrast",
+    estimation_note = paste0(
+      "Direct coefficient contrast in a model containing ",
+      paste(c(resource_terms, additional_terms), collapse = "; "),
+      "; positive values indicate a more positive TCM-bed association"
+    )
+  )
+}
+
 residualize_exposures <- function(panel, terms) {
   out <- lapply(terms, function(term) {
     residuals(lm(
@@ -341,7 +413,25 @@ for (model_id in names(model_specs)) {
   result_list <- append(result_list, list(model_result))
 }
 results <- dplyr::bind_rows(result_list)
-results <- bind_rows(results, fit_bed_physician_contrast())
+results <- bind_rows(
+  results,
+  fit_bed_physician_contrast(),
+  fit_resource_composition_contrast(
+    "RC0_CONTRAST",
+    "TCM and comprehensive-hospital bed coefficient contrast",
+    character(0)
+  ),
+  fit_resource_composition_contrast(
+    "RC1_CONTRAST",
+    "Context-adjusted TCM and comprehensive-hospital bed coefficient contrast",
+    c("z_log_gdp", "z_urbanization")
+  ),
+  fit_resource_composition_contrast(
+    "RC2_CONTRAST",
+    "Full joint resource coefficient contrast",
+    c("z_tcm_physicians", "z_log_gdp", "z_urbanization")
+  )
+)
 results <- results %>%
   mutate(across(
     c(effect, ci_lower, ci_upper, conventional_pvalue, cr2_ci_lower,

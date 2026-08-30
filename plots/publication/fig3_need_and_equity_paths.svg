@@ -107,8 +107,8 @@
 <text x='209.13' y='248.37' text-anchor='middle' style='font-size: 6.20px;fill: #6B747A; font-family: "Arial";' textLength='3.44px' lengthAdjust='spacingAndGlyphs'>3</text>
 <text x='238.96' y='248.37' text-anchor='middle' style='font-size: 6.20px;fill: #6B747A; font-family: "Arial";' textLength='3.44px' lengthAdjust='spacingAndGlyphs'>6</text>
 <text x='175.66' y='256.13' text-anchor='middle' style='font-size: 6.70px;fill: #24282B; font-family: "Arial";' textLength='147.11px' lengthAdjust='spacingAndGlyphs'>Percentage-point difference per province-year SD</text>
-<text x='107.34' y='32.73' style='font-size: 6.30px;fill: #6B747A; font-family: "Arial";' textLength='134.12px' lengthAdjust='spacingAndGlyphs'>Thick intervals: conventional; thin intervals: CR2</text>
-<text x='107.34' y='24.17' style='font-size: 7.40px; font-weight: bold;fill: #24282B; font-family: "Arial";' textLength='74.73px' lengthAdjust='spacingAndGlyphs'>Joint resource model</text>
+<text x='107.34' y='32.73' style='font-size: 6.30px;fill: #6B747A; font-family: "Arial";' textLength='218.22px' lengthAdjust='spacingAndGlyphs'>TCM minus comprehensive-hospital bed coefficient: +6.06 pp (CR2 P = 0.014)</text>
+<text x='107.34' y='24.17' style='font-size: 7.40px; font-weight: bold;fill: #24282B; font-family: "Arial";' textLength='171.62px' lengthAdjust='spacingAndGlyphs'>Capacity dimensions in the full contextual model</text>
 <text x='13.35' y='16.04' text-anchor='middle' style='font-size: 8.00px; font-weight: bold;fill: #24282B; font-family: "Arial";' textLength='5.78px' lengthAdjust='spacingAndGlyphs'>A</text>
 </g>
 <defs>

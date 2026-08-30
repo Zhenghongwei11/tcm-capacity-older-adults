@@ -18,14 +18,13 @@ Note: Values are unweighted person-wave summaries. The fully adjusted sample com
 | --- | --- | --- | --- | --- | --- |
 | Primary outcome | Disease-specific TCM treatment use | TCM hospital beds | 2.11 (0.09 to 4.13) | 0.041 | CR2 0.136; wild-cluster 0.198 |
 | Primary outcome | Disease-specific TCM treatment use | TCM physicians | -0.78 (-4.62 to 3.06) | 0.680 | Not estimated |
-| Health-system context | Disease-specific TCM treatment use | TCM beds adjusted for comprehensive-hospital beds | 2.60 (1.04 to 4.17) | 0.002 | CR2 0.068; wild-cluster 0.130 |
-| Health-system context | Disease-specific TCM treatment use | Comprehensive-hospital beds adjusted for TCM beds | -2.08 (-4.89 to 0.72) | 0.139 | CR2 0.183 |
-| Strict institution use | TCM hospital visit in past month | TCM hospital beds | 0.36 (0.09 to 0.63) | 0.011 | Not estimated |
-| Broader health-care use | Any doctor or outpatient visit | TCM hospital beds | 1.97 (0.75 to 3.19) | 0.003 | Not estimated |
 | Joint resource model | Disease-specific TCM treatment use | TCM hospital beds | 3.18 (1.41 to 4.95) | 0.001 | CR2 0.030 |
 | Joint resource model | Disease-specific TCM treatment use | TCM physicians | -2.19 (-5.38 to 1.01) | 0.171 | CR2 0.274 |
 | Joint resource model | Disease-specific TCM treatment use | Comprehensive-hospital beds | -2.88 (-5.17 to -0.60) | 0.015 | CR2 0.040 |
+| Resource-composition contrast | Disease-specific TCM treatment use | TCM bed minus comprehensive-hospital-bed coefficient | 6.06 (2.94 to 9.18) | <0.001 | CR2 6.06 (1.75 to 10.37); P = 0.014 |
 | Coefficient contrast | Disease-specific TCM treatment use | TCM bed minus physician coefficient | 5.03 (0.05 to 10.01) | 0.048 | CR2 5.03 (-1.53 to 11.59); P = 0.116 |
+| Strict institution use | TCM hospital visit in past month | TCM hospital beds | 0.36 (0.09 to 0.63) | 0.011 | Not estimated |
+| Broader health-care use | Any doctor or outpatient visit | TCM hospital beds | 1.97 (0.75 to 3.19) | 0.003 | Not estimated |
 | Need-related interaction | Disease-specific TCM treatment use | Multimorbidity, original specification | 2.96 (1.23 to 4.69) | 0.002 | Holm-adjusted P = 0.010 |
 | Need-related interaction | Disease-specific TCM treatment use | Multimorbidity, adjusted for condition count | 1.61 (-0.10 to 3.31) | 0.064 | CR2 P = 0.078 |
 
@@ -73,17 +72,31 @@ Note: Data are from official National Administration of Traditional Chinese Medi
 
 Note: The leave-one-province-out row reports a median and min-max range, not a confidence interval.
 
-## Supplementary Table 4. Joint Resource and Capital-Labor Structure Models
+## Supplementary Table 4. Resource-Composition and Capital-Labor Models
 
 | Model | Measure | Conventional estimate | Conventional P value | CR2 estimate or P value |
 | --- | --- | --- | --- | --- |
+| Add comprehensive-hospital bed density | TCM hospital beds per 10,000 population | 2.60 (1.04 to 4.17) | 0.002 | 2.60 (-0.40 to 5.60); P = 0.068 |
+| Add comprehensive-hospital bed density | Comprehensive-hospital beds per 10,000 population | -2.08 (-4.89 to 0.72) | 0.139 | -2.08 (-5.34 to 1.17); P = 0.183 |
+| Joint health-system and socioeconomic adjustment | TCM hospital beds per 10,000 population | 2.71 (0.94 to 4.49) | 0.004 | 2.71 (-0.01 to 5.43); P = 0.050 |
+| Joint health-system and socioeconomic adjustment | Comprehensive-hospital beds per 10,000 population | -3.08 (-5.45 to -0.71) | 0.013 | -3.08 (-5.88 to -0.28); P = 0.034 |
+| Add province-level population aging | TCM hospital beds per 10,000 population | 2.59 (0.56 to 4.61) | 0.014 | 2.59 (-0.32 to 5.50); P = 0.071 |
+| Add province-level population aging | Comprehensive-hospital beds per 10,000 population | -2.88 (-5.73 to -0.04) | 0.047 | -2.88 (-6.24 to 0.47); P = 0.085 |
+| Alternative adjustment using total hospital beds | TCM hospital beds per 10,000 population | 3.95 (1.70 to 6.20) | 0.001 | 3.95 (0.69 to 7.21); P = 0.027 |
+| Alternative adjustment using total hospital beds | All hospital beds per 10,000 population | -4.63 (-7.56 to -1.70) | 0.003 | -4.63 (-8.10 to -1.17); P = 0.014 |
 | Joint contextual resource model | TCM hospital beds | 3.18 (1.41 to 4.95) | 0.001 | 3.18 (0.48 to 5.88); P = 0.030 |
 | Joint contextual resource model | TCM physicians | -2.19 (-5.38 to 1.01) | 0.171 | -2.19 (-6.61 to 2.24); P = 0.274 |
 | Joint contextual resource model | Comprehensive-hospital beds | -2.88 (-5.17 to -0.60) | 0.015 | -2.88 (-5.60 to -0.16); P = 0.040 |
+| Lagged contextual resource model | Lagged TCM hospital beds per 10,000 population | 0.40 (-1.59 to 2.38) | 0.686 | 0.40 (-2.20 to 2.99); P = 0.741 |
+| Lagged contextual resource model | Lagged TCM practicing/assistant physicians per 10,000 population | -0.64 (-3.81 to 2.54) | 0.684 | -0.64 (-7.28 to 6.01); P = 0.794 |
+| Lagged contextual resource model | Comprehensive-hospital beds per 10,000 population | -1.78 (-4.37 to 0.81) | 0.169 | -1.78 (-5.42 to 1.86); P = 0.304 |
 | Bed-to-physician ratio only | TCM hospital beds per TCM practicing or assistant physician | 1.41 (-0.71 to 3.53) | 0.183 | 1.41 (-1.30 to 4.11); P = 0.263 |
 | Bed density and physician density coefficient contrast | Difference between TCM bed-density and physician-density associations | 5.03 (0.05 to 10.01) | 0.048 | 5.03 (-1.53 to 11.59); P = 0.116 |
+| TCM and comprehensive-hospital bed coefficient contrast | Difference between TCM bed-density and comprehensive-hospital-bed associations | 4.69 (0.99 to 8.38) | 0.015 | 4.69 (-1.55 to 10.92); P = 0.097 |
+| Context-adjusted TCM and comprehensive-hospital bed coefficient contrast | Difference between TCM bed-density and comprehensive-hospital-bed associations | 5.79 (2.40 to 9.19) | 0.002 | 5.79 (1.14 to 10.45); P = 0.023 |
+| Full joint resource coefficient contrast | Difference between TCM bed-density and comprehensive-hospital-bed associations | 6.06 (2.94 to 9.18) | <0.001 | 6.06 (1.75 to 10.37); P = 0.014 |
 
-Note: Coefficients in joint models are mutually adjusted for correlated province-year resource measures.
+Note: Coefficients are mutually adjusted within each listed model. Positive contrast estimates indicate a more positive TCM-bed association; they do not identify substitution or displacement between resource types.
 
 ## Supplementary Table 5. Outcome and Resource Specificity Synthesis
 

@@ -6,6 +6,8 @@ Primary models use linear probability models with province and survey-year fixed
 
 Main sensitivity checks include respondent weighting, individual fixed effects, correlated-effects models, province-specific linear trends, lagged supply, leave-one-province-out estimation, province resampling, contextual adjustment for general hospital capacity and provincial socioeconomic conditions, component deletion, and formal interaction testing.
 
+Resource-composition analyses jointly include TCM hospital beds, TCM physicians, comprehensive-hospital beds, provincial gross domestic product per capita, and urbanization. Direct coefficient contrasts compare the TCM-bed association with the comprehensive-hospital-bed association. Positive contrasts indicate a more positive TCM-bed coefficient within the stated model; they do not identify substitution or displacement between hospital sectors.
+
 Formal interaction P values for the prespecified access- and need-related family are adjusted with the Holm procedure. Multimorbidity analyses also account for the greater number of condition-specific treatment-reporting opportunities by adjusting for chronic-condition count and using diagnosis-eligible condition models. Estimates are reported as percentage-point differences with 95% confidence intervals unless otherwise stated.
 
 Figures and tables are rounded for presentation; model source tables retain additional decimal precision.

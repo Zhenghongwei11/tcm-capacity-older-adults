@@ -4,7 +4,7 @@ This repository contains code, derived aggregate tables, and figure-generation f
 
 ## Study Scope
 
-The analysis examines whether provincial TCM service capacity was reflected in reported TCM treatment use among older adults in China before COVID-19. The public repository is designed to reproduce the reported tables and figures after authorized users place the restricted CHARLS files in the expected local directory.
+The analysis examines how provincial TCM and general hospital capacity were associated with reported TCM treatment use among older adults in China before COVID-19. It includes direct comparisons of resource coefficients within mutually adjusted contextual models. The public repository is designed to reproduce the reported tables and figures after authorized users place the restricted CHARLS files in the expected local directory.
 
 ## Data Access
 

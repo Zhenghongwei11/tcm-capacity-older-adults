@@ -32,7 +32,6 @@ Rscript scripts/tcm/run_tcm_supply_falsification_models.R
 Rscript scripts/tcm/run_tcm_supply_bed_physician_models.R
 Rscript scripts/tcm/run_tcm_supply_capital_labor_models.R
 Rscript scripts/tcm/run_tcm_supply_jhf_enhancements.R
-Rscript scripts/tcm/audit_charls_longitudinal_sample.R
 Rscript scripts/tcm/run_tcm_supply_weighted_attrition_models.R
 Rscript scripts/tcm/run_tcm_supply_longitudinal_identification_models.R
 Rscript scripts/tcm/run_tcm_supply_composite_stability.R

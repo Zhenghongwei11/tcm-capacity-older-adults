@@ -142,6 +142,7 @@ cluster_checks <- read_tsv("results/tcm/tcm_supply_cluster_sensitivity.tsv", sho
 interactions <- read_tsv("results/tcm/tcm_supply_equity_interactions.tsv", show_col_types = FALSE)
 opportunity_checks <- read_tsv("results/tcm/tcm_supply_multimorbidity_opportunity_checks.tsv", show_col_types = FALSE)
 joint_resources <- read_tsv("results/tcm/tcm_supply_bed_physician_models.tsv", show_col_types = FALSE)
+capital_labor <- read_tsv("results/tcm/tcm_supply_capital_labor_models.tsv", show_col_types = FALSE)
 weighted_models <- read_tsv("results/tcm/tcm_supply_weighted_attrition_models.tsv", show_col_types = FALSE)
 identification_models <- read_tsv("results/tcm/tcm_supply_longitudinal_identification_models.tsv", show_col_types = FALSE)
 
@@ -470,6 +471,10 @@ resource_plot_data <- joint_resources %>%
     )))
   )
 
+resource_contrast <- capital_labor %>%
+  filter(model == "RC2_CONTRAST") %>%
+  slice(1)
+
 original_multi <- interactions %>%
   filter(stratum == "multichronic_stratum") %>%
   transmute(
@@ -508,6 +513,7 @@ need_plot_data <- bind_rows(original_multi, adjusted_multi, continuous_multi) %>
   ))))
 
 write_tsv(resource_plot_data, file.path(source_dir, "fig3_joint_resource_estimates.tsv"))
+write_tsv(resource_contrast, file.path(source_dir, "fig3_resource_composition_contrast.tsv"))
 write_tsv(need_plot_data, file.path(source_dir, "fig3_multimorbidity_opportunity_checks.tsv"))
 
 fig3a <- ggplot(resource_plot_data, aes(effect, resource)) +
@@ -517,8 +523,12 @@ fig3a <- ggplot(resource_plot_data, aes(effect, resource)) +
   geom_point(shape = 21, size = 2.5, fill = pal[["supply"]], colour = "white", stroke = 0.4) +
   scale_x_continuous(breaks = seq(-6, 12, 3)) +
   labs(
-    title = "Joint resource model",
-    subtitle = "Thick intervals: conventional; thin intervals: CR2",
+    title = "Capacity dimensions in the full contextual model",
+    subtitle = paste0(
+      "TCM minus comprehensive-hospital bed coefficient: +",
+      sprintf("%.2f", resource_contrast$effect),
+      " pp (CR2 P = ", sprintf("%.3f", resource_contrast$cr2_pvalue), ")"
+    ),
     x = "Percentage-point difference per province-year SD",
     y = NULL
   ) +
