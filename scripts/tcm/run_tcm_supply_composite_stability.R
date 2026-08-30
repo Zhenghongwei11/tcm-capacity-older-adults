@@ -100,7 +100,7 @@ family_omissions <- list(
 )
 
 results <- bind_rows(
-  fit_omission(d, character(), "primary_composite_reproduction"),
+  fit_omission(d, character(), "primary_composite_baseline"),
   bind_rows(lapply(component_vars, function(v) fit_omission(d, v, paste0("leave_one_out_", sub("^condition_tcm_", "", v))))),
   bind_rows(lapply(names(family_omissions), function(nm) fit_omission(d, family_omissions[[nm]], nm)))
 ) %>% mutate(across(where(is.numeric), ~ round(.x, 5)))

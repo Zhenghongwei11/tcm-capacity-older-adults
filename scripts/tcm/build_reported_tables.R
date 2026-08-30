@@ -180,7 +180,14 @@ weighted_table <- bind_rows(
   weighted %>% transmute(Model=case_when(model=="W0_unweighted_reproduction"~"Unweighted primary model",model=="W1_adjusted_cross_sectional_weight"~"Adjusted respondent-weight model",TRUE~"Trimmed respondent-weight model"),Estimate=fmt_ci(effect,ci_lower,ci_upper),`P value`=fmt_p(pvalue),Respondents=fmt_int(n_persons),Observations=fmt_int(n_person_waves)),
   identification %>% filter(model!="I0_primary_reproduction") %>% transmute(Model=model_label,Estimate=fmt_ci(effect,ci_lower,ci_upper),`P value`=fmt_p(pvalue),Respondents=fmt_int(n_persons),Observations=fmt_int(n_person_waves))
 )
-stability_table <- stability %>% transmute(`Composite definition`=str_to_sentence(str_replace_all(scenario,"_"," ")),`Outcome prevalence, %`=fmt_num(outcome_prevalence_percent),Estimate=fmt_ci(effect,ci_lower,ci_upper),`P value`=fmt_p(pvalue),Observations=fmt_int(n_person_waves))
+stability_table <- stability %>% transmute(
+  `Composite definition`=if_else(
+    scenario == "primary_composite_baseline",
+    "Primary composite (baseline)",
+    str_to_sentence(str_replace_all(scenario,"_"," "))
+  ),
+  `Outcome prevalence, %`=fmt_num(outcome_prevalence_percent),Estimate=fmt_ci(effect,ci_lower,ci_upper),`P value`=fmt_p(pvalue),Observations=fmt_int(n_person_waves)
+)
 
 lines <- c("# Manuscript Tables", "",
   section("Table 1. Characteristics of CHARLS Respondents Aged 60 Years or Older", table1, "Values are unweighted person-wave summaries. The fully adjusted sample comprised 32,634 observations from 13,083 respondents. ADL indicates activities of daily living; TCM, traditional Chinese medicine."),
@@ -188,7 +195,7 @@ lines <- c("# Manuscript Tables", "",
   section("Supplementary Table 1. Participant Flow, Retention, and Age-Source Quality Control", flow_table, "Age eligibility and adjustment use Harmonized CHARLS age, with raw-wave age used only when harmonized age is unavailable."),
   section("Supplementary Table 2. Provincial TCM Hospital Bed and Physician Supply, 2011-2018", supply_table, "Data are from official National Administration of Traditional Chinese Medicine statistical extracts."),
   section("Supplementary Table 3. Small-Cluster and Province-Influence Sensitivity", cluster_table, "The leave-one-province-out row reports a median and min-max range, not a confidence interval."),
-  section("Supplementary Table 4. Resource-Composition and Capital-Labor Models", resource_table, "Coefficients are mutually adjusted within each listed model. Positive contrast estimates indicate a more positive TCM-bed association; they do not identify substitution or displacement between resource types."),
+  section("Supplementary Table 4. Resource-Composition and Capital-Labor Models", resource_table, "Coefficients are mutually adjusted within each listed model. Contrast rows report direct differences between coefficients within the listed model."),
   section("Supplementary Table 5. Outcome and Resource Specificity Synthesis", specificity_table, "General outpatient and hospital outcomes are broader utilization checks, not strict negative controls."),
   section("Supplementary Table 6. Weighting and Longitudinal Identification", weighted_table, "Weighted models target wave-specific representation; individual and province-trend models use different identifying variation."),
   section("Supplementary Table 7. Component Checks for the Primary Composite", component_table, "Components with few events are descriptive checks of the composite outcome."),

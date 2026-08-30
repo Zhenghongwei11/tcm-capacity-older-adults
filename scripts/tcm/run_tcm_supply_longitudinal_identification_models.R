@@ -64,28 +64,28 @@ mundlak_means <- paste(
 fit_specs <- list(
   list(
     id = "I0_primary_reproduction",
-    label = "province and wave fixed effects",
+    label = "Province and wave fixed effects",
     formula = as.formula(paste0("outcome_primary ~ z_tcm_beds_per_10000 + ", full_covariates, " | province_supply_key + year")),
     data = d,
     identifying_variation = "within-province change across four survey waves"
   ),
   list(
     id = "I1_individual_fixed_effects",
-    label = "individual and wave fixed effects",
+    label = "Individual and wave fixed effects",
     formula = as.formula(paste0("outcome_primary ~ z_tcm_beds_per_10000 + ", time_varying_covariates, " | person_id + year")),
     data = d %>% filter(person_n_waves >= 2),
     identifying_variation = "within-person change among respondents observed in at least two eligible waves"
   ),
   list(
     id = "I2_mundlak_correlated_effects",
-    label = "province and wave fixed effects with person means",
+    label = "Province and wave fixed effects with person means",
     formula = as.formula(paste0("outcome_primary ~ z_tcm_beds_per_10000 + ", full_covariates, " + ", mundlak_means, " | province_supply_key + year")),
     data = d %>% filter(person_n_waves >= 2),
     identifying_variation = "within-person deviations with observed person-level means entered explicitly"
   ),
   list(
     id = "I3_province_linear_trends",
-    label = "province and wave fixed effects plus province-specific linear trends",
+    label = "Province and wave fixed effects plus province-specific linear trends",
     formula = as.formula(paste0("outcome_primary ~ z_tcm_beds_per_10000 + ", full_covariates, " + i(province_supply_key, time_index) | province_supply_key + year")),
     data = d,
     identifying_variation = "deviations from province-specific linear change across four survey waves"

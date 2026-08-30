@@ -96,7 +96,7 @@ Note: The leave-one-province-out row reports a median and min-max range, not a c
 | Context-adjusted TCM and comprehensive-hospital bed coefficient contrast | Difference between TCM bed-density and comprehensive-hospital-bed associations | 5.79 (2.40 to 9.19) | 0.002 | 5.79 (1.14 to 10.45); P = 0.023 |
 | Full joint resource coefficient contrast | Difference between TCM bed-density and comprehensive-hospital-bed associations | 6.06 (2.94 to 9.18) | <0.001 | 6.06 (1.75 to 10.37); P = 0.014 |
 
-Note: Coefficients are mutually adjusted within each listed model. Positive contrast estimates indicate a more positive TCM-bed association; they do not identify substitution or displacement between resource types.
+Note: Coefficients are mutually adjusted within each listed model. Contrast rows report direct differences between coefficients within the listed model.
 
 ## Supplementary Table 5. Outcome and Resource Specificity Synthesis
 
@@ -125,9 +125,9 @@ Note: General outpatient and hospital outcomes are broader utilization checks, n
 | Unweighted primary model | 2.11 (0.09 to 4.13) | 0.041 | 13,083 | 32,634 |
 | Adjusted respondent-weight model | 0.69 (-1.61 to 2.98) | 0.544 | 12,849 | 31,940 |
 | Trimmed respondent-weight model | 1.14 (-0.92 to 3.20) | 0.267 | 12,849 | 31,940 |
-| individual and wave fixed effects | 2.08 (-0.28 to 4.44) | 0.082 | 10,151 | 29,702 |
-| province and wave fixed effects with person means | 2.00 (0.01 to 3.99) | 0.048 | 10,151 | 29,702 |
-| province and wave fixed effects plus province-specific linear trends | 0.62 (-3.21 to 4.45) | 0.742 | 13,083 | 32,634 |
+| Individual and wave fixed effects | 2.08 (-0.28 to 4.44) | 0.082 | 10,151 | 29,702 |
+| Province and wave fixed effects with person means | 2.00 (0.01 to 3.99) | 0.048 | 10,151 | 29,702 |
+| Province and wave fixed effects plus province-specific linear trends | 0.62 (-3.21 to 4.45) | 0.742 | 13,083 | 32,634 |
 
 Note: Weighted models target wave-specific representation; individual and province-trend models use different identifying variation.
 
@@ -155,7 +155,7 @@ Note: Components with few events are descriptive checks of the composite outcome
 
 | Composite definition | Outcome prevalence, % | Estimate | P value | Observations |
 | --- | --- | --- | --- | --- |
-| Primary composite reproduction | 21.54 | 2.11 (0.09 to 4.13) | 0.041 | 32,634 |
+| Primary composite (baseline) | 21.54 | 2.11 (0.09 to 4.13) | 0.041 | 32,634 |
 | Leave one out dyslipidemia | 21.03 | 2.08 (0.16 to 4.00) | 0.035 | 32,634 |
 | Leave one out chronic lung | 20.24 | 2.08 (0.00 to 4.16) | 0.050 | 32,634 |
 | Leave one out liver | 21.32 | 2.01 (-0.04 to 4.06) | 0.054 | 32,634 |

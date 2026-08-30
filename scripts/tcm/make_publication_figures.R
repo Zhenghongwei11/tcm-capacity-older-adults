@@ -698,7 +698,7 @@ figs2 <- ggplot() +
     fill = guide_colorbar(title = "Event rate (%)", order = 2, barwidth = unit(28, "mm"), barheight = unit(2.4, "mm"))
   ) +
   labs(
-    title = "Outcome observability across the longitudinal panel",
+    title = "Outcome availability and event rates across the longitudinal panel",
     subtitle = "Circle area represents event count; fill represents event rate among respondents aged 60+",
     x = "Survey wave",
     y = NULL

@@ -101,7 +101,7 @@
 <text x='359.89' y='225.50' text-anchor='middle' style='font-size: 6.20px;fill: #24282B; font-family: "Arial";' textLength='6.88px' lengthAdjust='spacingAndGlyphs'>15</text>
 <text x='375.82' y='225.50' text-anchor='middle' style='font-size: 6.20px;fill: #24282B; font-family: "Arial";' textLength='6.88px' lengthAdjust='spacingAndGlyphs'>20</text>
 <text x='90.91' y='18.32' style='font-size: 6.60px;fill: #6B747A; font-family: "Arial";' textLength='264.66px' lengthAdjust='spacingAndGlyphs'>Circle area represents event count; fill represents event rate among respondents aged 60+</text>
-<text x='90.91' y='9.49' style='font-size: 7.70px; font-weight: bold;fill: #24282B; font-family: "Arial";' textLength='191.62px' lengthAdjust='spacingAndGlyphs'>Outcome observability across the longitudinal panel</text>
+<text x='90.91' y='9.49' style='font-size: 7.70px; font-weight: bold;fill: #24282B; font-family: "Arial";' textLength='242.12px' lengthAdjust='spacingAndGlyphs'>Outcome availability and event rates across the longitudinal panel</text>
 </g>
 </g>
 </svg>
